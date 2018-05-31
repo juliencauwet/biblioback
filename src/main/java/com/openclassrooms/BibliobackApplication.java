@@ -1,4 +1,4 @@
-package com.openclassrooms.biblioback;
+package com.openclassrooms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
