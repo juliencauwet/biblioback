@@ -1,4 +1,4 @@
-package com.openclassrooms.biblioback;
+package com.openclassrooms;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -35,6 +35,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
     @Bean
     public XsdSchema countriesSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("books.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource("book.xsd"));
     }
 }
