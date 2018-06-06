@@ -28,7 +28,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("BooksPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://biblioback.openclassrooms.com");
+        wsdl11Definition.setTargetNamespace("https://ws.biblioback.openclassrooms.com");
         wsdl11Definition.setSchema(countriesSchema);
         return wsdl11Definition;
     }
