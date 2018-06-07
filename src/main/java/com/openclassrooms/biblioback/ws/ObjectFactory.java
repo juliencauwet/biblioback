@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.06.06 à 09:47:09 AM CEST 
+// Généré le : 2018.06.06 à 10:29:52 PM CEST 
 //
 
 
@@ -50,6 +50,38 @@ public class ObjectFactory {
      */
     public Book createBook() {
         return new Book();
+    }
+
+    /**
+     * Create an instance of {@link GetAllBooksRequest }
+     * 
+     */
+    public GetAllBooksRequest createGetAllBooksRequest() {
+        return new GetAllBooksRequest();
+    }
+
+    /**
+     * Create an instance of {@link AddBookResponse }
+     * 
+     */
+    public AddBookResponse createAddBookResponse() {
+        return new AddBookResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllBooksResponse }
+     * 
+     */
+    public GetAllBooksResponse createGetAllBooksResponse() {
+        return new GetAllBooksResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddBookRequest }
+     * 
+     */
+    public AddBookRequest createAddBookRequest() {
+        return new AddBookRequest();
     }
 
     /**

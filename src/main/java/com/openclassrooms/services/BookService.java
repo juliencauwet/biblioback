@@ -23,4 +23,8 @@ public class BookService {
        bookRepository.findAll().forEach(bookEntities::add);
        return bookEntities;
    }
+
+    public BookEntity getBookByTitle(String title){
+       return bookRepository.findBookEntityByTitle(title);
+    }
 }
