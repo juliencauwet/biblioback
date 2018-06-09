@@ -10,7 +10,6 @@ package com.openclassrooms.biblioback.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="confirmation" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +35,27 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "title"
+    "confirmation"
 })
-@XmlRootElement(name = "getBookRequest")
-public class GetBookRequest {
+@XmlRootElement(name = "addBookResponse")
+public class AddBookResponse {
 
-    @XmlElement(required = true)
-    protected String title;
+    protected boolean confirmation;
 
     /**
-     * Obtient la valeur de la propriété title.
+     * Obtient la valeur de la propriété confirmation.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getTitle() {
-        return title;
+    public boolean isConfirmation() {
+        return confirmation;
     }
 
     /**
-     * Définit la valeur de la propriété title.
+     * Définit la valeur de la propriété confirmation.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setTitle(String value) {
-        this.title = value;
+    public void setConfirmation(boolean value) {
+        this.confirmation = value;
     }
 
 }

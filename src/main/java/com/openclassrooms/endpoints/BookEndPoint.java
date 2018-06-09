@@ -3,6 +3,7 @@ package com.openclassrooms.endpoints;
 import com.openclassrooms.biblioback.ws.*;
 import com.openclassrooms.entities.BookEntity;
 import com.openclassrooms.services.BookService;
+import com.openclassrooms.services.IBookService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -15,10 +16,10 @@ import java.util.List;
 
 @Endpoint
 public class BookEndPoint {
-    private static final String NAMESPACE_URI = "https://www.openclassrooms.com/xml/library";
+    private static final String NAMESPACE_URI = "http://ws.biblioback.openclassrooms.com";
 
     @Autowired
-    private BookService bookService;
+    private IBookService bookService;
 
     @Autowired
     public BookEndPoint(BookService bookService){
@@ -66,6 +67,13 @@ public class BookEndPoint {
         }
         response.getGetAllBooks().addAll(books);
         return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "test")
+    @ResponsePayload
+    public int test(@RequestPayload GetTestRequest request ){
+
+        return request.getNb() * 5;
     }
 }
 

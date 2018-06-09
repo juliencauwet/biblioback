@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class BookService {
+public class BookService implements IBookService {
 
    @Autowired
    private BookRepository bookRepository;

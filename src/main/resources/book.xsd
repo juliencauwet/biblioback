@@ -53,6 +53,22 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="getTestRequest" >
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nb" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTestResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
 
 
     <xs:complexType name="book">
