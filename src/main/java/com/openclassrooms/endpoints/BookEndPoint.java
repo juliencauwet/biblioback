@@ -30,7 +30,7 @@ public class BookEndPoint {
      *
      * @param request
      */
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addBook")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addBookRequest")
     @ResponsePayload
     public void addBook(@RequestPayload AddBookRequest request){
 
@@ -41,7 +41,7 @@ public class BookEndPoint {
         bookService.addBook(book);
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "GetBookDetails")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getBookRequest")
     @ResponsePayload
     public GetBookResponse getBookByName(@RequestPayload GetBookRequest request){
 
@@ -52,7 +52,7 @@ public class BookEndPoint {
         return response;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "GetAllBooks")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllBooksRequest")
     @ResponsePayload
     public GetAllBooksResponse getAllBooks() {
 

@@ -15,9 +15,9 @@ public class CLR implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        BookEntity b1 = new BookEntity("La Peste", "Albert", "Camus");
-        BookEntity b2 = new BookEntity("L'Ecume des jours", "Boris", "Vian");
-        BookEntity b3 = new BookEntity("L'assomoir", "Emile", "Zola");
+        BookEntity b1 = new BookEntity("La Peste", "Camus", "Albert");
+        BookEntity b2 = new BookEntity("L'Ecume des jours", "Vian", "Boris");
+        BookEntity b3 = new BookEntity("L'assomoir", "Zola", "Emile");
 
         bookService.addBook(b1);
         bookService.addBook(b2);

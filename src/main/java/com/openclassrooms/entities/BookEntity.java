@@ -1,8 +1,8 @@
 package com.openclassrooms.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class BookEntity {
@@ -13,6 +13,10 @@ public class BookEntity {
     private String title;
     private String authorName;
     private String authorFirstName;
+
+    @OneToMany
+    @JoinColumn(name = "borrowing_id")
+    private Set<Borrowing> borrowings = new HashSet<>();
 
     public BookEntity(String title, String authorName, String authorFirstName) {
         this.title = title;
