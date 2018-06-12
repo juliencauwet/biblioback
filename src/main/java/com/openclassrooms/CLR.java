@@ -1,6 +1,7 @@
 package com.openclassrooms;
 
 import com.openclassrooms.biblioback.ws.Book;
+import com.openclassrooms.entities.AppUser;
 import com.openclassrooms.entities.BookEntity;
 import com.openclassrooms.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class CLR implements CommandLineRunner{
         bookService.addBook(b1);
         bookService.addBook(b2);
         bookService.addBook(b3);
+
+        AppUser u1 = new AppUser("Julien", "Cauwet", "juliencauwet@yahoo.fr", "12345", true);
+        AppUser u2 = new AppUser("Juan", "Olivero", "juliencauwet@yahoo.fr", "12345", true);
+        AppUser u3 = new AppUser("Manu", "Favre", "juliencauwet@yahoo.fr", "12345", true);
+        AppUser u4 = new AppUser("Laëtitia", "Cauwet", "juliencauwet@yahoo.fr", "12345", true);
 
         System.out.println("Quelques données ont été entrées!");
     }

@@ -1,6 +1,8 @@
 package com.openclassrooms.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,9 +15,12 @@ public class AppUser {
 
     private String firstName;
     private String name;
+    @NotNull
     private String email;
+    @NotNull
+    @Size(min = 5, max = 30)
     private String password;
-    private String isAdmin;
+    private Boolean isAdmin = false;
 
     @OneToMany
     @JoinColumn(name = "borrowing_id")
@@ -24,7 +29,7 @@ public class AppUser {
     public AppUser() {
     }
 
-    public AppUser(String firstName, String name, String email, String password, String isAdmin) {
+    public AppUser(String firstName, String name, String email, String password, Boolean isAdmin) {
         this.firstName = firstName;
         this.name = name;
         this.email = email;
@@ -72,11 +77,11 @@ public class AppUser {
         this.password = password;
     }
 
-    public String getIsAdmin() {
+    public Boolean getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(String isAdmin) {
+    public void setIsAdmin(Boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
 }

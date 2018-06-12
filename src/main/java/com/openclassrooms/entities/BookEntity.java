@@ -1,6 +1,10 @@
 package com.openclassrooms.entities;
 
+import com.openclassrooms.Status;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,9 +14,16 @@ public class BookEntity {
     @Id
     @GeneratedValue
     private int id;
+    @NotNull
+    @Size(min = 1, max = 300)
     private String title;
+    @NotNull
+    @Size(min = 1, max = 100)
     private String authorName;
+    @NotNull
+    @Size(min = 1, max = 100)
     private String authorFirstName;
+    private Status status = Status.DISPONIBLE;
 
     @OneToMany
     @JoinColumn(name = "borrowing_id")
