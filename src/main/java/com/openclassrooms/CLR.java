@@ -3,11 +3,15 @@ package com.openclassrooms;
 import com.openclassrooms.biblioback.ws.Book;
 import com.openclassrooms.entities.AppUser;
 import com.openclassrooms.entities.BookEntity;
+import com.openclassrooms.entities.Borrowing;
 import com.openclassrooms.services.AppUserService;
 import com.openclassrooms.services.BookService;
+import com.openclassrooms.services.BorrowingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 @Component
 public class CLR implements CommandLineRunner{
@@ -16,6 +20,8 @@ public class CLR implements CommandLineRunner{
     BookService bookService;
     @Autowired
     AppUserService appUserService;
+    @Autowired
+    BorrowingService borrowingService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -42,6 +48,13 @@ public class CLR implements CommandLineRunner{
         appUserService.addUser(u2);
         appUserService.addUser(u3);
         appUserService.addUser(u4);
+
+        Borrowing bor1 = new Borrowing(u1, b3, new Date());
+        Borrowing bor2 = new Borrowing(u4, b6, new Date());
+        Borrowing bor3 = new Borrowing(u2, b2, new Date());
+        Borrowing bor4 = new Borrowing(u3, b1, new Date());
+
+
 
         System.out.println("Quelques données ont été entrées!");
     }

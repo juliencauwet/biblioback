@@ -68,22 +68,7 @@ public class BookEndPoint {
         response.getBookGetAll().addAll(books);
         return response;
     }
-    /*
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllArticlesRequest")
-	@ResponsePayload
-	public GetAllArticlesResponse getAllArticles() {
-		GetAllArticlesResponse response = new GetAllArticlesResponse();
-		List<ArticleInfo> articleInfoList = new ArrayList<>();
-		List<Article> articleList = articleService.getAllArticles();
-		for (int i = 0; i < articleList.size(); i++) {
-		     ArticleInfo ob = new ArticleInfo();
-		     BeanUtils.copyProperties(articleList.get(i), ob);
-		     articleInfoList.add(ob);
-		}
-		response.getArticleInfo().addAll(articleInfoList);
-		return response;
-	}
-     */
+
 
 
 }

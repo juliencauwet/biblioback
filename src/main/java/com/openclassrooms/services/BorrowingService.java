@@ -5,6 +5,7 @@ import com.openclassrooms.repositories.BorrowingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,6 +34,8 @@ public class BorrowingService implements IBorrowingService {
 
     @Override
     public List<Borrowing> borrowingReport() {
-        return null;
+        List<Borrowing> borrowings = new ArrayList<>();
+        borrowingRepository.findAll().forEach(borrowings::add);
+        return borrowings;
     }
 }
