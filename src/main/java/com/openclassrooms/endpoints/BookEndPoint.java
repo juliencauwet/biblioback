@@ -32,7 +32,7 @@ public class BookEndPoint {
      */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addBookRequest")
     @ResponsePayload
-    public void addBook(@RequestPayload AddBookRequest request){
+    public void addBook(@RequestPayload BookAddRequest request){
 
         BookEntity book = new BookEntity();
         book.setAuthorFirstName(request.getAuthorFirstName());
@@ -41,22 +41,22 @@ public class BookEndPoint {
         bookService.addBook(book);
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getBookRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "bookGetRequest")
     @ResponsePayload
-    public GetBookResponse getBookByName(@RequestPayload GetBookRequest request){
+    public BookGetResponse getBookByName(@RequestPayload BookGetRequest request){
 
-        GetBookResponse response = new GetBookResponse();
+        BookGetResponse response = new BookGetResponse();
         Book book = new Book();
         BeanUtils.copyProperties(bookService.getBookByTitle(request.getTitle()), book);
         response.setBook(book);
         return response;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllBooksRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "bookGetAllRequest")
     @ResponsePayload
-    public GetAllBooksResponse getAllBooks() {
+    public BookGetAllResponse getAllBooks() {
 
-        GetAllBooksResponse response = new GetAllBooksResponse();
+        BookGetAllResponse response = new BookGetAllResponse();
         List<Book> books = new ArrayList<>();
         List<BookEntity> bookEntities = bookService.getAllBooks();
 
@@ -65,15 +65,26 @@ public class BookEndPoint {
             BeanUtils.copyProperties(bookEntities.get(i), b);
             books.add(b);
         }
-        response.getGetAllBooks().addAll(books);
+        response.getBookGetAll().addAll(books);
         return response;
     }
+    /*
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllArticlesRequest")
+	@ResponsePayload
+	public GetAllArticlesResponse getAllArticles() {
+		GetAllArticlesResponse response = new GetAllArticlesResponse();
+		List<ArticleInfo> articleInfoList = new ArrayList<>();
+		List<Article> articleList = articleService.getAllArticles();
+		for (int i = 0; i < articleList.size(); i++) {
+		     ArticleInfo ob = new ArticleInfo();
+		     BeanUtils.copyProperties(articleList.get(i), ob);
+		     articleInfoList.add(ob);
+		}
+		response.getArticleInfo().addAll(articleInfoList);
+		return response;
+	}
+     */
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "test")
-    @ResponsePayload
-    public int test(@RequestPayload GetTestRequest request ){
 
-        return request.getNb() * 5;
-    }
 }
 

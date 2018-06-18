@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.06.08 à 11:05:21 PM CEST 
+// Généré le : 2018.06.18 à 12:42:12 PM CEST 
 //
 
 
@@ -37,11 +37,75 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetBookResponse }
+     * Create an instance of {@link BookGetRequest }
      * 
      */
-    public GetBookResponse createGetBookResponse() {
-        return new GetBookResponse();
+    public BookGetRequest createBookGetRequest() {
+        return new BookGetRequest();
+    }
+
+    /**
+     * Create an instance of {@link AppUserAddRequest }
+     * 
+     */
+    public AppUserAddRequest createAppUserAddRequest() {
+        return new AppUserAddRequest();
+    }
+
+    /**
+     * Create an instance of {@link AppUserValidityCheckRequest }
+     * 
+     */
+    public AppUserValidityCheckRequest createAppUserValidityCheckRequest() {
+        return new AppUserValidityCheckRequest();
+    }
+
+    /**
+     * Create an instance of {@link BookAddRequest }
+     * 
+     */
+    public BookAddRequest createBookAddRequest() {
+        return new BookAddRequest();
+    }
+
+    /**
+     * Create an instance of {@link AppUserGetAllResponse }
+     * 
+     */
+    public AppUserGetAllResponse createAppUserGetAllResponse() {
+        return new AppUserGetAllResponse();
+    }
+
+    /**
+     * Create an instance of {@link AppUser }
+     * 
+     */
+    public AppUser createAppUser() {
+        return new AppUser();
+    }
+
+    /**
+     * Create an instance of {@link BookGetAllRequest }
+     * 
+     */
+    public BookGetAllRequest createBookGetAllRequest() {
+        return new BookGetAllRequest();
+    }
+
+    /**
+     * Create an instance of {@link BorrowingAddResponse }
+     * 
+     */
+    public BorrowingAddResponse createBorrowingAddResponse() {
+        return new BorrowingAddResponse();
+    }
+
+    /**
+     * Create an instance of {@link BookGetAllResponse }
+     * 
+     */
+    public BookGetAllResponse createBookGetAllResponse() {
+        return new BookGetAllResponse();
     }
 
     /**
@@ -53,59 +117,91 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllBooksRequest }
+     * Create an instance of {@link BoroowingAddRequest }
      * 
      */
-    public GetAllBooksRequest createGetAllBooksRequest() {
-        return new GetAllBooksRequest();
+    public BoroowingAddRequest createBoroowingAddRequest() {
+        return new BoroowingAddRequest();
     }
 
     /**
-     * Create an instance of {@link GetTestResponse }
+     * Create an instance of {@link BorrowingGetRequest }
      * 
      */
-    public GetTestResponse createGetTestResponse() {
-        return new GetTestResponse();
+    public BorrowingGetRequest createBorrowingGetRequest() {
+        return new BorrowingGetRequest();
     }
 
     /**
-     * Create an instance of {@link AddBookResponse }
+     * Create an instance of {@link BorrwingGetAllResponse }
      * 
      */
-    public AddBookResponse createAddBookResponse() {
-        return new AddBookResponse();
+    public BorrwingGetAllResponse createBorrwingGetAllResponse() {
+        return new BorrwingGetAllResponse();
     }
 
     /**
-     * Create an instance of {@link GetAllBooksResponse }
+     * Create an instance of {@link Borrowing }
      * 
      */
-    public GetAllBooksResponse createGetAllBooksResponse() {
-        return new GetAllBooksResponse();
+    public Borrowing createBorrowing() {
+        return new Borrowing();
     }
 
     /**
-     * Create an instance of {@link AddBookRequest }
+     * Create an instance of {@link AppUserValidityCheckResponse }
      * 
      */
-    public AddBookRequest createAddBookRequest() {
-        return new AddBookRequest();
+    public AppUserValidityCheckResponse createAppUserValidityCheckResponse() {
+        return new AppUserValidityCheckResponse();
     }
 
     /**
-     * Create an instance of {@link GetTestRequest }
+     * Create an instance of {@link AppUserGetAllRequest }
      * 
      */
-    public GetTestRequest createGetTestRequest() {
-        return new GetTestRequest();
+    public AppUserGetAllRequest createAppUserGetAllRequest() {
+        return new AppUserGetAllRequest();
     }
 
     /**
-     * Create an instance of {@link GetBookRequest }
+     * Create an instance of {@link BoorrowingGetResponse }
      * 
      */
-    public GetBookRequest createGetBookRequest() {
-        return new GetBookRequest();
+    public BoorrowingGetResponse createBoorrowingGetResponse() {
+        return new BoorrowingGetResponse();
+    }
+
+    /**
+     * Create an instance of {@link AppUserAddResponse }
+     * 
+     */
+    public AppUserAddResponse createAppUserAddResponse() {
+        return new AppUserAddResponse();
+    }
+
+    /**
+     * Create an instance of {@link BookGetResponse }
+     * 
+     */
+    public BookGetResponse createBookGetResponse() {
+        return new BookGetResponse();
+    }
+
+    /**
+     * Create an instance of {@link BorrwingGetAllRequest }
+     * 
+     */
+    public BorrwingGetAllRequest createBorrwingGetAllRequest() {
+        return new BorrwingGetAllRequest();
+    }
+
+    /**
+     * Create an instance of {@link BookAddResponse }
+     * 
+     */
+    public BookAddResponse createBookAddResponse() {
+        return new BookAddResponse();
     }
 
 }

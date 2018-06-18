@@ -18,7 +18,7 @@ public class Borrowing {
     private BookEntity bookEntity;
     @NotNull
     private Date startDate;
-    private Date backDate;
+    private Date returnDate;
     private Date extensionDate;
     private Boolean isExtended = false;
 
@@ -64,11 +64,11 @@ public class Borrowing {
     }
 
     public Date getBackDate() {
-        return backDate;
+        return returnDate;
     }
 
     public void setBackDate(Date backDate) {
-        this.backDate = backDate;
+        this.returnDate = backDate;
     }
 
     public Date getExtensionDate() {

@@ -1,4 +1,4 @@
-package com.openclassrooms.entities;
+package com.openclassrooms;
 
 public class Config {
 

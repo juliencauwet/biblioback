@@ -20,14 +20,14 @@ public class BookEntity {
     @NotNull
     @Size(min = 1, max = 100)
     private String authorName;
-    @NotNull
-    @Size(min = 1, max = 100)
     private String authorFirstName;
     private Status status = Status.DISPONIBLE;
 
     @OneToMany
     @JoinColumn(name = "borrowing_id")
     private Set<Borrowing> borrowings = new HashSet<>();
+
+    private static int availableNumber = 0;
 
     public BookEntity(String title, String authorName, String authorFirstName) {
         this.title = title;
@@ -69,5 +69,13 @@ public class BookEntity {
 
     public void setAuthorFirstName(String authorFirstName) {
         this.authorFirstName = authorFirstName;
+    }
+
+    public static int getAvailableNumber() {
+        return availableNumber;
+    }
+
+    public static void setAvailableNumber(int availableNumber) {
+        BookEntity.availableNumber = availableNumber;
     }
 }

@@ -5,6 +5,8 @@ import com.openclassrooms.repositories.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AppUserService implements IAppUserService {
 
@@ -24,5 +26,12 @@ public class AppUserService implements IAppUserService {
     @Override
     public Boolean checkUserValidity(AppUser user) {
         return checkUser(user).getPassword().equals(user.getPassword());
+    }
+
+    @Override
+    public List<AppUser> getAllAppUsers() {
+        List<AppUser> appUsers = null;
+        appUserRepository.findAll().forEach(appUsers::add);
+        return appUsers;
     }
 }

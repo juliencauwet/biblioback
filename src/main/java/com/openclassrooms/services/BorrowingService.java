@@ -3,9 +3,11 @@ package com.openclassrooms.services;
 import com.openclassrooms.entities.Borrowing;
 import com.openclassrooms.repositories.BorrowingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BorrowingService implements IBorrowingService {
 
     @Autowired
