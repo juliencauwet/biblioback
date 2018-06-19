@@ -1,6 +1,10 @@
 package com.openclassrooms.endpoints;
 
-import com.openclassrooms.biblioback.ws.*;
+
+import com.openclassrooms.biblioback.ws.appuser.AppUserAddRequest;
+import com.openclassrooms.biblioback.ws.appuser.AppUserGetAllResponse;
+import com.openclassrooms.biblioback.ws.appuser.AppUserValidityCheckRequest;
+import com.openclassrooms.biblioback.ws.appuser.AppUserValidityCheckResponse;
 import com.openclassrooms.entities.AppUser;
 import com.openclassrooms.services.AppUserService;
 import com.openclassrooms.services.IAppUserService;
@@ -78,10 +82,10 @@ public class AppUserEndPoint {
     public AppUserGetAllResponse getAllAppUsers() {
         AppUserGetAllResponse response = new AppUserGetAllResponse();
         List<AppUser> appUsers = appUserService.getAllAppUsers();
-        List<com.openclassrooms.biblioback.ws.AppUser> WSAppUsers = new ArrayList<>();
+        List<com.openclassrooms.biblioback.ws.appuser.AppUser> WSAppUsers = new ArrayList<>();
 
         for (int i = 0; i < appUsers.size(); i++){
-            com.openclassrooms.biblioback.ws.AppUser appUser = new com.openclassrooms.biblioback.ws.AppUser();
+            com.openclassrooms.biblioback.ws.appuser.AppUser appUser = new com.openclassrooms.biblioback.ws.appuser.AppUser();
             BeanUtils.copyProperties(appUsers.get(i),appUser);
             WSAppUsers.add(appUser);
         }

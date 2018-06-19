@@ -1,6 +1,6 @@
 package com.openclassrooms.endpoints;
 
-import com.openclassrooms.biblioback.ws.*;
+import com.openclassrooms.biblioback.ws.book.*;
 import com.openclassrooms.entities.BookEntity;
 import com.openclassrooms.services.BookService;
 import com.openclassrooms.services.IBookService;

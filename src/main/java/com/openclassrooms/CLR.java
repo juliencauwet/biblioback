@@ -1,6 +1,5 @@
 package com.openclassrooms;
 
-import com.openclassrooms.biblioback.ws.Book;
 import com.openclassrooms.entities.AppUser;
 import com.openclassrooms.entities.BookEntity;
 import com.openclassrooms.entities.Borrowing;
