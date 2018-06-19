@@ -11,23 +11,24 @@ package com.openclassrooms.biblioback.ws;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour book complex type.
+ * <p>Classe Java pour anonymous complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="book">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="authorName" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="authorFirstName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="authorFirstName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="authorName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="availableNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,60 +38,45 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "book", propOrder = {
-    "id",
-    "authorName",
+@XmlType(name = "", propOrder = {
+    "title",
     "authorFirstName",
-    "title"
+    "authorName",
+    "availableNumber"
 })
-public class Book {
+@XmlRootElement(name = "bookAddRequest")
+public class BookAddRequest {
 
-    protected int id;
     @XmlElement(required = true)
-    protected String authorName;
+    protected String title;
     @XmlElement(required = true)
     protected String authorFirstName;
     @XmlElement(required = true)
-    protected String title;
+    protected String authorName;
+    protected int availableNumber;
 
     /**
-     * Obtient la valeur de la propriété id.
-     * 
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Définit la valeur de la propriété id.
-     * 
-     */
-    public void setId(int value) {
-        this.id = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété authorName.
+     * Obtient la valeur de la propriété title.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getAuthorName() {
-        return authorName;
+    public String getTitle() {
+        return title;
     }
 
     /**
-     * Définit la valeur de la propriété authorName.
+     * Définit la valeur de la propriété title.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setAuthorName(String value) {
-        this.authorName = value;
+    public void setTitle(String value) {
+        this.title = value;
     }
 
     /**
@@ -118,27 +104,43 @@ public class Book {
     }
 
     /**
-     * Obtient la valeur de la propriété title.
+     * Obtient la valeur de la propriété authorName.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTitle() {
-        return title;
+    public String getAuthorName() {
+        return authorName;
     }
 
     /**
-     * Définit la valeur de la propriété title.
+     * Définit la valeur de la propriété authorName.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTitle(String value) {
-        this.title = value;
+    public void setAuthorName(String value) {
+        this.authorName = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété availableNumber.
+     * 
+     */
+    public int getAvailableNumber() {
+        return availableNumber;
+    }
+
+    /**
+     * Définit la valeur de la propriété availableNumber.
+     * 
+     */
+    public void setAvailableNumber(int value) {
+        this.availableNumber = value;
     }
 
 }

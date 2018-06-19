@@ -11,23 +11,26 @@ package com.openclassrooms.biblioback.ws;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Classe Java pour book complex type.
+ * <p>Classe Java pour borrowing complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="book">
+ * &lt;complexType name="borrowing">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="authorName" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="authorFirstName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="book" type="{http://ws.biblioback.openclassrooms.com}book"/>
+ *         &lt;element name="appUser" type="{http://ws.biblioback.openclassrooms.com}appUser"/>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="startDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,21 +40,25 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "book", propOrder = {
+@XmlType(name = "borrowing", propOrder = {
     "id",
-    "authorName",
-    "authorFirstName",
-    "title"
+    "book",
+    "appUser",
+    "title",
+    "startDate"
 })
-public class Book {
+public class Borrowing {
 
     protected int id;
     @XmlElement(required = true)
-    protected String authorName;
+    protected Book book;
     @XmlElement(required = true)
-    protected String authorFirstName;
+    protected AppUser appUser;
     @XmlElement(required = true)
     protected String title;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar startDate;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -70,51 +77,51 @@ public class Book {
     }
 
     /**
-     * Obtient la valeur de la propriété authorName.
+     * Obtient la valeur de la propriété book.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Book }
      *     
      */
-    public String getAuthorName() {
-        return authorName;
+    public Book getBook() {
+        return book;
     }
 
     /**
-     * Définit la valeur de la propriété authorName.
+     * Définit la valeur de la propriété book.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Book }
      *     
      */
-    public void setAuthorName(String value) {
-        this.authorName = value;
+    public void setBook(Book value) {
+        this.book = value;
     }
 
     /**
-     * Obtient la valeur de la propriété authorFirstName.
+     * Obtient la valeur de la propriété appUser.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link AppUser }
      *     
      */
-    public String getAuthorFirstName() {
-        return authorFirstName;
+    public AppUser getAppUser() {
+        return appUser;
     }
 
     /**
-     * Définit la valeur de la propriété authorFirstName.
+     * Définit la valeur de la propriété appUser.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link AppUser }
      *     
      */
-    public void setAuthorFirstName(String value) {
-        this.authorFirstName = value;
+    public void setAppUser(AppUser value) {
+        this.appUser = value;
     }
 
     /**
@@ -139,6 +146,30 @@ public class Book {
      */
     public void setTitle(String value) {
         this.title = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété startDate.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getStartDate() {
+        return startDate;
+    }
+
+    /**
+     * Définit la valeur de la propriété startDate.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setStartDate(XMLGregorianCalendar value) {
+        this.startDate = value;
     }
 
 }
