@@ -1,5 +1,5 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.biblioback.openclassrooms.com"
-           targetNamespace="http://ws.biblioback.openclassrooms.com" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://book.ws.biblioback.openclassrooms.com"
+           targetNamespace="http://book.ws.biblioback.openclassrooms.com" elementFormDefault="qualified">
 
     <xs:element name="bookGetRequest">
         <xs:complexType>

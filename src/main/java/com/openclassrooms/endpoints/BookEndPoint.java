@@ -16,7 +16,7 @@ import java.util.List;
 
 @Endpoint
 public class BookEndPoint {
-    private static final String NAMESPACE_URI = "http://ws.biblioback.openclassrooms.com";
+    private static final String NAMESPACE_URI = "http://book.ws.biblioback.openclassrooms.com";
 
     @Autowired
     private IBookService bookService;

@@ -10,7 +10,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
 public class BorrowingEndPoint {
-    private static final String NAMESPACE_URI = "http://ws.biblioback.openclassrooms.com";
+    private static final String NAMESPACE_URI = "http://borrowing.ws.biblioback.openclassrooms.com";
 
     @Autowired
     private IBorrowingService borrowingService;

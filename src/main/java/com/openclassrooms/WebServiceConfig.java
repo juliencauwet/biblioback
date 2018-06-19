@@ -28,7 +28,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("BooksPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://ws.biblioback.openclassrooms.com");
+        wsdl11Definition.setTargetNamespace("http://book.ws.biblioback.openclassrooms.com");
         wsdl11Definition.setSchema(booksSchema);
         return wsdl11Definition;
     }
@@ -38,7 +38,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("BorrowingsPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://ws.biblioback.openclassrooms.com");
+        wsdl11Definition.setTargetNamespace("http://borrowing.ws.biblioback.openclassrooms.com");
         wsdl11Definition.setSchema(borrowingsSchema);
         return wsdl11Definition;
     }
@@ -48,7 +48,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("AppUsersPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://ws.biblioback.openclassrooms.com");
+        wsdl11Definition.setTargetNamespace("http://appuser.ws.biblioback.openclassrooms.com");
         wsdl11Definition.setSchema(appUserSchema);
         return wsdl11Definition;
     }
