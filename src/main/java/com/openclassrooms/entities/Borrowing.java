@@ -86,4 +86,16 @@ public class Borrowing {
     public void setExtended(Boolean extended) {
         isExtended = extended;
     }
+
+    /**
+     *
+     * @param startDate
+     * @param isExtended
+     * @return
+     */
+    public Date dueReturnDate(Date startDate, Boolean isExtended){
+        Date returnDate = new Date();
+
+        return returnDate;
+    }
 }

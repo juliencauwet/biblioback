@@ -53,7 +53,10 @@ public class CLR implements CommandLineRunner{
         Borrowing bor3 = new Borrowing(u2, b2, new Date());
         Borrowing bor4 = new Borrowing(u3, b1, new Date());
 
-
+        borrowingService.newBorrowing(bor1);
+        borrowingService.newBorrowing(bor2);
+        borrowingService.newBorrowing(bor3);
+        borrowingService.newBorrowing(bor4);
 
         System.out.println("Quelques données ont été entrées!");
     }

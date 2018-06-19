@@ -16,10 +16,7 @@ public class BorrowingService implements IBorrowingService {
 
     @Override
     public void newBorrowing(Borrowing borrowing) {
-        if(borrowingRepository.findById(borrowing.getId()) == null )
             borrowingRepository.save(borrowing);
-        else
-            System.out.println("L'emprunt existe déjà");
     }
 
     @Override

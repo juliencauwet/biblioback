@@ -1,6 +1,8 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://borrowing.ws.biblioback.openclassrooms.com"
            targetNamespace="http://borrowing.ws.biblioback.openclassrooms.com" elementFormDefault="qualified"
-            xmlns:bk="http://book.ws.biblioback.openclassrooms.com" xmlns:au="http://appuser.ws.biblioback.openclassrooms.com">
+           xmlns:bk="http://book.ws.biblioback.openclassrooms.com"
+           xmlns:au="http://appuser.ws.biblioback.openclassrooms.com">
+
 
     <xs:import namespace="http://book.ws.biblioback.openclassrooms.com" schemaLocation="book.xsd"/>
     <xs:import namespace="http://appuser.ws.biblioback.openclassrooms.com" schemaLocation="appuser.xsd"/>
@@ -13,7 +15,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="boorrowingGetResponse">
+    <xs:element name="borrowingGetResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="book" type="bk:book"/>
@@ -21,7 +23,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="boroowingAddRequest" >
+    <xs:element name="borrowingAddRequest" >
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="title" type="xs:string"/>
@@ -39,13 +41,13 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="borrwingGetAllRequest" >
+    <xs:element name="borrowingGetAllRequest" >
         <xs:complexType>
             <xs:sequence/>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="borrwingGetAllResponse">
+    <xs:element name="borrowingGetAllResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="borrowingGetAll" type="tns:borrowing"

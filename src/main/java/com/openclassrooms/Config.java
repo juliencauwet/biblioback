@@ -1,9 +1,7 @@
 package com.openclassrooms;
 
-public class Config {
+public class Config{
 
-    private int id;
-
-    private int extensionTime = 4;
+    private final static int extensionTime = 4;
 
 }
