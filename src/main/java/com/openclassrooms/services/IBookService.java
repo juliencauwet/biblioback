@@ -7,7 +7,8 @@ import java.util.List;
 public interface IBookService {
 
         List<BookEntity> getAllBooks();
-        BookEntity getBookByTitle(String title);
+        List<BookEntity> getBookByTitle(String title);
         void addBook(BookEntity bookEntity);
+        BookEntity getBookById(int id);
 
 }

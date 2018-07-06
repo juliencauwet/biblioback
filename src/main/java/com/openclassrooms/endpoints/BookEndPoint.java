@@ -1,6 +1,6 @@
 package com.openclassrooms.endpoints;
 
-import com.openclassrooms.biblioback.ws.book.*;
+import com.openclassrooms.biblioback.ws.test.*;
 import com.openclassrooms.entities.BookEntity;
 import com.openclassrooms.services.BookService;
 import com.openclassrooms.services.IBookService;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Endpoint
 public class BookEndPoint {
-    private static final String NAMESPACE_URI = "http://book.ws.biblioback.openclassrooms.com";
+    private static final String NAMESPACE_URI = "http://test.ws.biblioback.openclassrooms.com";
 
     @Autowired
     private IBookService bookService;
@@ -26,11 +26,12 @@ public class BookEndPoint {
         this.bookService = bookService;
     }
 
+
     /**
      *
      * @param request
      */
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addBookRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "bookAddRequest")
     @ResponsePayload
     public void addBook(@RequestPayload BookAddRequest request){
 
@@ -38,17 +39,35 @@ public class BookEndPoint {
         book.setAuthorFirstName(request.getAuthorFirstName());
         book.setAuthorName(request.getAuthorName());
         book.setTitle(request.getTitle());
+        book.setAvailableNumber(book.getAvailableNumber()+request.getAvailableNumber());
         bookService.addBook(book);
     }
 
+     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "bookGetByIdRequest")
+     @ResponsePayload
+     public BookGetByIdResponse getBookById(@RequestPayload BookGetByIdRequest request) {
+         BookGetByIdResponse response = new BookGetByIdResponse();
+         Book book = new Book();
+         BeanUtils.copyProperties(bookService.getBookById(request.getId()), book);
+         response.setBookGet(book);
+         return response;
+     }
+
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "bookGetRequest")
     @ResponsePayload
-    public BookGetResponse getBookByName(@RequestPayload BookGetRequest request){
+    public BookGetResponse getBooksByName(@RequestPayload BookGetRequest request){
 
         BookGetResponse response = new BookGetResponse();
-        Book book = new Book();
-        BeanUtils.copyProperties(bookService.getBookByTitle(request.getTitle()), book);
-        response.setBook(book);
+
+        List<Book> books = new ArrayList<>();
+        List<BookEntity> bookEntities = bookService.getBookByTitle(request.getTitle());
+
+        for(int i = 0; i < bookEntities.size(); i++){
+            Book b = new Book();
+            BeanUtils.copyProperties(bookEntities.get(i), b);
+            books.add(b);
+        }
+        response.getBookGet().addAll(books);
         return response;
     }
 
@@ -68,6 +87,8 @@ public class BookEndPoint {
         response.getBookGetAll().addAll(books);
         return response;
     }
+
+
 
 
 

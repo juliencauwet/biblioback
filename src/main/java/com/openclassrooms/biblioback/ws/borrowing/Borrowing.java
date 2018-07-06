@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.06.19 à 06:32:49 PM CEST 
+// Généré le : 2018.07.06 à 03:12:51 PM CEST 
 //
 
 
@@ -31,7 +31,6 @@ import com.openclassrooms.biblioback.ws.book.Book;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="book" type="{http://book.ws.biblioback.openclassrooms.com}book"/>
  *         &lt;element name="appUser" type="{http://appuser.ws.biblioback.openclassrooms.com}appUser"/>
- *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="startDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -46,7 +45,6 @@ import com.openclassrooms.biblioback.ws.book.Book;
     "id",
     "book",
     "appUser",
-    "title",
     "startDate"
 })
 public class Borrowing {
@@ -56,8 +54,6 @@ public class Borrowing {
     protected Book book;
     @XmlElement(required = true)
     protected AppUser appUser;
-    @XmlElement(required = true)
-    protected String title;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar startDate;
@@ -124,30 +120,6 @@ public class Borrowing {
      */
     public void setAppUser(AppUser value) {
         this.appUser = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété title.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * Définit la valeur de la propriété title.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTitle(String value) {
-        this.title = value;
     }
 
     /**

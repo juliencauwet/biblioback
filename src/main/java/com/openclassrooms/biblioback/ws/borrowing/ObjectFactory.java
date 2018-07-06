@@ -2,13 +2,16 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.06.19 à 06:32:49 PM CEST 
+// Généré le : 2018.07.06 à 03:12:51 PM CEST 
 //
 
 
 package com.openclassrooms.biblioback.ws.borrowing;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -28,6 +31,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Borrowing_QNAME = new QName("http://com/openclassrooms/biblioback/ws/borrowing", "borrowing");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.openclassrooms.biblioback.ws.borrowing
@@ -90,6 +94,15 @@ public class ObjectFactory {
      */
     public BorrowingAddResponse createBorrowingAddResponse() {
         return new BorrowingAddResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Borrowing }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://com/openclassrooms/biblioback/ws/borrowing", name = "borrowing")
+    public JAXBElement<Borrowing> createBorrowing(Borrowing value) {
+        return new JAXBElement<Borrowing>(_Borrowing_QNAME, Borrowing.class, null, value);
     }
 
 }

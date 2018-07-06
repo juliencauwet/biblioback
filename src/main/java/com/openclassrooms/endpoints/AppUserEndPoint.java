@@ -1,10 +1,9 @@
 package com.openclassrooms.endpoints;
 
-
-import com.openclassrooms.biblioback.ws.appuser.AppUserAddRequest;
-import com.openclassrooms.biblioback.ws.appuser.AppUserGetAllResponse;
-import com.openclassrooms.biblioback.ws.appuser.AppUserValidityCheckRequest;
-import com.openclassrooms.biblioback.ws.appuser.AppUserValidityCheckResponse;
+import com.openclassrooms.biblioback.ws.test.AppUserAddRequest;
+import com.openclassrooms.biblioback.ws.test.AppUserGetAllResponse;
+import com.openclassrooms.biblioback.ws.test.AppUserValidityCheckRequest;
+import com.openclassrooms.biblioback.ws.test.AppUserValidityCheckResponse;
 import com.openclassrooms.entities.AppUser;
 import com.openclassrooms.services.AppUserService;
 import com.openclassrooms.services.IAppUserService;
@@ -20,7 +19,7 @@ import java.util.List;
 
 @Endpoint
 public class AppUserEndPoint {
-    private static final String NAMESPACE_URI = "http://appuser.ws.biblioback.openclassrooms.com";
+    private static final String NAMESPACE_URI = "http://test.ws.biblioback.openclassrooms.com";
 
     @Autowired
     private IAppUserService appUserService;
@@ -44,31 +43,7 @@ public class AppUserEndPoint {
         appUser.setEmail(request.getEmail());
         appUserService.addUser(appUser);
     }
-    /*
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addArticleRequest")
-	@ResponsePayload
-	public AddArticleResponse addArticle(@RequestPayload AddArticleRequest request) {
-		AddArticleResponse response = new AddArticleResponse();
-    	        ServiceStatus serviceStatus = new ServiceStatus();
-		Article article = new Article();
-		article.setTitle(request.getTitle());
-		article.setCategory(request.getCategory());
-                boolean flag = articleService.addArticle(article);
-                if (flag == false) {
-        	   serviceStatus.setStatusCode("CONFLICT");
-        	   serviceStatus.setMessage("Content Already Available");
-        	   response.setServiceStatus(serviceStatus);
-                } else {
-		   ArticleInfo articleInfo = new ArticleInfo();
-	           BeanUtils.copyProperties(article, articleInfo);
-		   response.setArticleInfo(articleInfo);
-        	   serviceStatus.setStatusCode("SUCCESS");
-        	   serviceStatus.setMessage("Content Added Successfully");
-        	   response.setServiceStatus(serviceStatus);
-                }
-                return response;
-	}
-     */
+
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "appUserValidityCheckRequest")
     @ResponsePayload
@@ -82,10 +57,10 @@ public class AppUserEndPoint {
     public AppUserGetAllResponse getAllAppUsers() {
         AppUserGetAllResponse response = new AppUserGetAllResponse();
         List<AppUser> appUsers = appUserService.getAllAppUsers();
-        List<com.openclassrooms.biblioback.ws.appuser.AppUser> WSAppUsers = new ArrayList<>();
+        List<com.openclassrooms.biblioback.ws.test.AppUser> WSAppUsers = new ArrayList<>();
 
         for (int i = 0; i < appUsers.size(); i++){
-            com.openclassrooms.biblioback.ws.appuser.AppUser appUser = new com.openclassrooms.biblioback.ws.appuser.AppUser();
+            com.openclassrooms.biblioback.ws.test.AppUser appUser = new com.openclassrooms.biblioback.ws.test.AppUser();
             BeanUtils.copyProperties(appUsers.get(i),appUser);
             WSAppUsers.add(appUser);
         }

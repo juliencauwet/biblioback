@@ -4,6 +4,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +18,7 @@ import org.springframework.xml.xsd.XsdSchema;
 @EnableWs
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {
+
     @Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
@@ -24,7 +26,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         servlet.setTransformWsdlLocations(true);
         return new ServletRegistrationBean(servlet, "/ws/*");
     }
-
+    /*
     @Bean(name = "book")
     public DefaultWsdl11Definition BookDefaultWsdl11Definition(XsdSchema booksSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -36,7 +38,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean(name = "borrowing")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema borrowingsSchema) {
+    public DefaultWsdl11Definition BorrowingDefaultWsdl11Definition(XsdSchema borrowingsSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("BorrowingsPort");
         wsdl11Definition.setLocationUri("/ws");
@@ -54,7 +56,19 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         wsdl11Definition.setSchema(appUserSchema);
         return wsdl11Definition;
     }
+    */
 
+    @Bean(name = "test")
+    public DefaultWsdl11Definition TestDefaultWsdl11Definition(XsdSchema testSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("TestPort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace("http://test.ws.biblioback.openclassrooms.com");
+        wsdl11Definition.setSchema(testSchema);
+        return wsdl11Definition;
+    }
+
+    /*
     @Bean
     public XsdSchema booksSchema() {
         return new SimpleXsdSchema(new ClassPathResource("book.xsd"));
@@ -68,6 +82,12 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     @Bean
     public XsdSchema borrowingsSchema() {
         return new SimpleXsdSchema(new ClassPathResource("borrowing.xsd"));
+    }
+    */
+
+    @Bean
+    public XsdSchema testSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("test.xsd"));
     }
 
     @Bean

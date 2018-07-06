@@ -53,6 +53,8 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="appUser" type="tns:appUser"/>
+
     <xs:complexType name="appUser">
         <xs:sequence>
             <xs:element name="id" type="xs:int"/>

@@ -18,13 +18,20 @@ public class BookService implements IBookService {
        bookRepository.save(bookEntity);
    }
 
-   public List<BookEntity> getAllBooks(){
+    @Override
+    public BookEntity getBookById(int id) {
+       bookRepository.findById(id);
+        return null;
+    }
+
+    public List<BookEntity> getAllBooks(){
        List<BookEntity> bookEntities = new ArrayList<>();
        bookRepository.findAll().forEach(bookEntities::add);
        return bookEntities;
    }
 
-    public BookEntity getBookByTitle(String title){
+    public List<BookEntity> getBookByTitle(String title){
        return bookRepository.findBookEntityByTitle(title);
     }
+
 }

@@ -1,5 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://book.ws.biblioback.openclassrooms.com" targetNamespace="http://book.ws.biblioback.openclassrooms.com"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+<!--
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://book.ws.biblioback.openclassrooms.com"
            targetNamespace="http://book.ws.biblioback.openclassrooms.com" elementFormDefault="qualified">
+           -->
 
     <xs:element name="bookGetRequest">
         <xs:complexType>
@@ -12,7 +18,7 @@
     <xs:element name="bookGetResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="book" type="tns:book"/>
+                <xs:element name="book" type="book"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -45,11 +51,13 @@
     <xs:element name="bookGetAllResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="bookGetAll" type="tns:book"
+                <xs:element name="bookGetAll" type="book"
                             minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <xs:element name="book" type="book"/>
 
     <xs:complexType name="book">
         <xs:sequence>
