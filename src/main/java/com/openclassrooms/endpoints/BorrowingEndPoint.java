@@ -50,13 +50,12 @@ public class BorrowingEndPoint {
      * @param request
      * @return response: confirmation booléenne que l'emprunt a été enregistré
      */
-    //   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "borrowingAddRequest")
-    //   @ResponsePayload
-    //   public void addBorrowing(@RequestPayload BorrowingAddRequest request){
-    //      com.openclassrooms.entities.Borrowing borrowing= new com.openclassrooms.entities.Borrowing();
-    //      borrowing.setStartDate(request.getStartDate());
+       @PayloadRoot(namespace = NAMESPACE_URI, localPart = "borrowingAddRequest")
+       @ResponsePayload
+       public void addBorrowing(@RequestPayload BorrowingAddRequest request){
 
-    //   }
+
+       }
 
 }
 

@@ -70,21 +70,16 @@ public class AppUserEndPoint {
         return response;
     }
 
-     /*
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllArticlesRequest")
-	@ResponsePayload
-	public GetAllArticlesResponse getAllArticles() {
-		GetAllArticlesResponse response = new GetAllArticlesResponse();
-		List<ArticleInfo> articleInfoList = new ArrayList<>();
-		List<Article> articleList = articleService.getAllArticles();
-		for (int i = 0; i < articleList.size(); i++) {
-		     ArticleInfo ob = new ArticleInfo();
-		     BeanUtils.copyProperties(articleList.get(i), ob);
-		     articleInfoList.add(ob);
-		}
-		response.getArticleInfo().addAll(articleInfoList);
-		return response;
-	}
-     */
+   // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "appUserGetByIdRequest")
+   // @ResponsePayload
+   // public AppUserGetByIdResponse getBookById(@RequestPayload AppUserGetByIdRequest request) {
+   //     BookGetByIdResponse response = new BookGetByIdResponse();
+   //     Book book = new Book();
+   //     BeanUtils.copyProperties(bookService.getBookById(request.getId()), book);
+   //     response.setBookGet(book);
+   //     return response;
+   // }
+
+
 }
 
