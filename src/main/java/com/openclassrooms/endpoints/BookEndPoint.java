@@ -39,17 +39,20 @@ public class BookEndPoint {
         book.setAuthorFirstName(request.getAuthorFirstName());
         book.setAuthorName(request.getAuthorName());
         book.setTitle(request.getTitle());
-        book.setAvailableNumber(book.getAvailableNumber()+request.getAvailableNumber());
+        book.setNumber(book.getNumber()+request.getNumber());
         bookService.addBook(book);
     }
 
      @PayloadRoot(namespace = NAMESPACE_URI, localPart = "bookGetByIdRequest")
      @ResponsePayload
      public BookGetByIdResponse getBookById(@RequestPayload BookGetByIdRequest request) {
+
          BookGetByIdResponse response = new BookGetByIdResponse();
          Book book = new Book();
+
          BeanUtils.copyProperties(bookService.getBookById(request.getId()), book);
          response.setBookGet(book);
+
          return response;
      }
 

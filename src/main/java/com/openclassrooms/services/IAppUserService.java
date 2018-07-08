@@ -10,5 +10,6 @@ public interface IAppUserService {
     AppUser checkUser(AppUser user);
     Boolean checkUserValidity(AppUser user);
     List<AppUser> getAllAppUsers();
+    AppUser getAppUserById(int id);
 
 }

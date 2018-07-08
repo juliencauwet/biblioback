@@ -27,12 +27,13 @@ public class BookEntity {
     @JoinColumn(name = "borrowing_id")
     private Set<Borrowing> borrowings = new HashSet<>();
 
-    private static int availableNumber = 0;
+    private int number;
 
-    public BookEntity(String title, String authorName, String authorFirstName) {
+    public BookEntity(@NotNull @Size(min = 1, max = 300) String title, @NotNull @Size(min = 1, max = 100) String authorName, String authorFirstName, int number) {
         this.title = title;
         this.authorName = authorName;
         this.authorFirstName = authorFirstName;
+        this.number = number;
     }
 
     public BookEntity(){
@@ -71,11 +72,11 @@ public class BookEntity {
         this.authorFirstName = authorFirstName;
     }
 
-    public static int getAvailableNumber() {
-        return availableNumber;
+    public int getNumber() {
+        return number;
     }
 
-    public static void setAvailableNumber(int availableNumber) {
-        BookEntity.availableNumber = availableNumber;
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

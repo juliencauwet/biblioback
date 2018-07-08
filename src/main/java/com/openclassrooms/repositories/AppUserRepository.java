@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface AppUserRepository extends CrudRepository<AppUser,Integer>{
 
     AppUser findByEmail(String email);
+    AppUser findById(int id);
 }

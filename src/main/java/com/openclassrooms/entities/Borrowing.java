@@ -63,12 +63,12 @@ public class Borrowing {
         this.startDate = startDate;
     }
 
-    public Date getBackDate() {
+    public Date getReturnDate() {
         return returnDate;
     }
 
-    public void setBackDate(Date backDate) {
-        this.returnDate = backDate;
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
     }
 
     public Date getExtensionDate() {
@@ -87,15 +87,4 @@ public class Borrowing {
         isExtended = extended;
     }
 
-    /**
-     *
-     * @param startDate
-     * @param isExtended
-     * @return
-     */
-    public Date dueReturnDate(Date startDate, Boolean isExtended){
-        Date returnDate = new Date();
-
-        return returnDate;
-    }
 }

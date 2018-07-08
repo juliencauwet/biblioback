@@ -65,6 +65,7 @@
             <xsd:element name="book" type="bk:book"/>
             <xsd:element name="appUser" type="au:appUser"/>
             <xsd:element name="startDate" type="xsd:date"/>
+            <xsd:element name="dueReturnDate" type="xsd:date" />
         </xsd:sequence>
     </xsd:complexType>
 

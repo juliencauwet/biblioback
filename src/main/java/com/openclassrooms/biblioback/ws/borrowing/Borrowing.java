@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.07.06 à 03:12:51 PM CEST 
+// Généré le : 2018.07.08 à 02:47:32 PM CEST 
 //
 
 
@@ -32,6 +32,7 @@ import com.openclassrooms.biblioback.ws.book.Book;
  *         &lt;element name="book" type="{http://book.ws.biblioback.openclassrooms.com}book"/>
  *         &lt;element name="appUser" type="{http://appuser.ws.biblioback.openclassrooms.com}appUser"/>
  *         &lt;element name="startDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
+ *         &lt;element name="dueReturnDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -45,7 +46,8 @@ import com.openclassrooms.biblioback.ws.book.Book;
     "id",
     "book",
     "appUser",
-    "startDate"
+    "startDate",
+    "dueReturnDate"
 })
 public class Borrowing {
 
@@ -57,6 +59,9 @@ public class Borrowing {
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar startDate;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar dueReturnDate;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -144,6 +149,30 @@ public class Borrowing {
      */
     public void setStartDate(XMLGregorianCalendar value) {
         this.startDate = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété dueReturnDate.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDueReturnDate() {
+        return dueReturnDate;
+    }
+
+    /**
+     * Définit la valeur de la propriété dueReturnDate.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDueReturnDate(XMLGregorianCalendar value) {
+        this.dueReturnDate = value;
     }
 
 }

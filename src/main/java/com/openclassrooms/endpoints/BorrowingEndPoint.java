@@ -1,6 +1,9 @@
 package com.openclassrooms.endpoints;
 
 import com.openclassrooms.biblioback.ws.test.*;
+import com.openclassrooms.entities.BookEntity;
+import com.openclassrooms.services.IAppUserService;
+import com.openclassrooms.services.IBookService;
 import com.openclassrooms.services.IBorrowingService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,11 @@ public class BorrowingEndPoint {
 
     @Autowired
     private IBorrowingService borrowingService;
+
+    @Autowired
+    private IBookService bookService;
+    @Autowired
+    private IAppUserService appUserService;
 
     public BorrowingEndPoint(IBorrowingService borrowingService){
         this.borrowingService = borrowingService;
@@ -53,9 +61,18 @@ public class BorrowingEndPoint {
        @PayloadRoot(namespace = NAMESPACE_URI, localPart = "borrowingAddRequest")
        @ResponsePayload
        public void addBorrowing(@RequestPayload BorrowingAddRequest request){
+           com.openclassrooms.entities.Borrowing borrowing = new com.openclassrooms.entities.Borrowing();
 
-
+           com.openclassrooms.entities.AppUser appUser = appUserService.getAppUserById(request.getAppUserId());
+           BookEntity book = bookService.getBookById(request.getBookId());
+           borrowing.setAppUser(appUser);
+           borrowing.setBookEntity(book);
+           borrowing.setStartDate(request.getStartDate().toGregorianCalendar().getTime());
+           book.setNumber(book.getNumber()-1);
+           borrowingService.newBorrowing(borrowing);
        }
+
+
 
 }
 

@@ -35,4 +35,9 @@ public class AppUserService implements IAppUserService {
         appUserRepository.findAll().forEach(appUsers::add);
         return appUsers;
     }
+
+    @Override
+    public AppUser getAppUserById(int id) {
+        return appUserRepository.findById(id);
+    }
 }

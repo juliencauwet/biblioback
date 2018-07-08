@@ -20,8 +20,7 @@ public class BookService implements IBookService {
 
     @Override
     public BookEntity getBookById(int id) {
-       bookRepository.findById(id);
-        return null;
+        return bookRepository.findBookEntityById(id);
     }
 
     public List<BookEntity> getAllBooks(){
