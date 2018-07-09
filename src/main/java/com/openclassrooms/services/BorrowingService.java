@@ -20,8 +20,8 @@ public class BorrowingService implements IBorrowingService {
     }
 
     @Override
-    public void updateBorrowing() {
-
+    public void updateBorrowing(Borrowing borrowing) {
+        borrowingRepository.save(borrowing);
     }
 
     @Override
@@ -34,5 +34,10 @@ public class BorrowingService implements IBorrowingService {
         List<Borrowing> borrowings = new ArrayList<>();
         borrowingRepository.findAll().forEach(borrowings::add);
         return borrowings;
+    }
+
+    @Override
+    public Borrowing getById(int id) {
+        return borrowingRepository.findById(id);
     }
 }

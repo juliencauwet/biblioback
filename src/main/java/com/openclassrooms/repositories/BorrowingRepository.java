@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BorrowingRepository extends CrudRepository<Borrowing,Integer>{
+
+    Borrowing findById(int id);
 }

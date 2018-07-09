@@ -10,5 +10,6 @@ public interface IBookService {
         List<BookEntity> getBookByTitle(String title);
         void addBook(BookEntity bookEntity);
         BookEntity getBookById(int id);
+        void updateBook(BookEntity book);
 
 }

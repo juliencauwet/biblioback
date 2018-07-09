@@ -19,7 +19,7 @@ public class Borrowing {
     @NotNull
     private Date startDate;
     private Date returnDate;
-    private Date extensionDate;
+    private Date dueReturnDate;
     private Boolean isExtended = false;
 
     public Borrowing() {
@@ -71,12 +71,12 @@ public class Borrowing {
         this.returnDate = returnDate;
     }
 
-    public Date getExtensionDate() {
-        return extensionDate;
+    public Date setDueReturnDate() {
+        return dueReturnDate;
     }
 
-    public void setExtensionDate(Date extensionDate) {
-        this.extensionDate = extensionDate;
+    public void setDueReturnDate(Date dueReturnDate) {
+        this.dueReturnDate = dueReturnDate;
     }
 
     public Boolean getExtended() {

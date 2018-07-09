@@ -23,6 +23,11 @@ public class BookService implements IBookService {
         return bookRepository.findBookEntityById(id);
     }
 
+    @Override
+    public void updateBook(BookEntity book) {
+        bookRepository.save(book);
+    }
+
     public List<BookEntity> getAllBooks(){
        List<BookEntity> bookEntities = new ArrayList<>();
        bookRepository.findAll().forEach(bookEntities::add);

@@ -8,8 +8,8 @@ import java.util.List;
 public interface IBorrowingService {
 
     void newBorrowing(Borrowing borrowing);
-    void updateBorrowing();
+    void updateBorrowing(Borrowing borrowing);
     void stopBorrowing();
     List<Borrowing> borrowingReport();
-
+    Borrowing getById(int id);
 }
