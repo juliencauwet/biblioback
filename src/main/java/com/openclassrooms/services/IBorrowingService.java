@@ -9,7 +9,6 @@ public interface IBorrowingService {
 
     void newBorrowing(Borrowing borrowing);
     void updateBorrowing(Borrowing borrowing);
-    void stopBorrowing();
     List<Borrowing> borrowingReport();
     Borrowing getById(int id);
 }

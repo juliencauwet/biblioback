@@ -19,14 +19,10 @@ public class AppUserService implements IAppUserService {
         appUserRepository.save(user);
     }
 
-    @Override
-    public AppUser checkUser(AppUser user) {
-        return appUserRepository.findByEmail(user.getEmail());
-    }
 
     @Override
-    public Boolean checkUserValidity(AppUser user) {
-        return checkUser(user).getPassword().equals(user.getPassword());
+    public AppUser checkUser(String email) {
+        return appUserRepository.findByEmail(email);
     }
 
     @Override

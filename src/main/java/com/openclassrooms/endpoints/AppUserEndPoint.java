@@ -48,8 +48,14 @@ public class AppUserEndPoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "appUserValidityCheckRequest")
     @ResponsePayload
     public AppUserValidityCheckResponse checkUser(@RequestPayload AppUserValidityCheckRequest request){
+        AppUserValidityCheckResponse response = new AppUserValidityCheckResponse();
+        AppUser au = appUserService.checkUser(request.getEmail());
+        com.openclassrooms.biblioback.ws.test.AppUser auws = new com.openclassrooms.biblioback.ws.test.AppUser();
+        BeanUtils.copyProperties(au, auws);
+        if (au.getPassword().equals(request.getPassword()))
+            response.setUser(auws);
 
-       return null;
+       return response;
     }
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "appUserGetAllRequest")

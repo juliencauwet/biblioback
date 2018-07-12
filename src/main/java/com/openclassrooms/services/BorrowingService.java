@@ -25,11 +25,6 @@ public class BorrowingService implements IBorrowingService {
     }
 
     @Override
-    public void stopBorrowing() {
-
-    }
-
-    @Override
     public List<Borrowing> borrowingReport() {
         List<Borrowing> borrowings = new ArrayList<>();
         borrowingRepository.findAll().forEach(borrowings::add);
