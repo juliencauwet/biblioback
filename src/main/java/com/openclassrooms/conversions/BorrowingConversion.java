@@ -26,9 +26,12 @@ public class BorrowingConversion {
         borrowingWS.setId(bor.getId());
         borrowingWS.setAppUser(appUserConversion.appUserEntityToAppUser(bor.getAppUser()));
         borrowingWS.setBook(bookConversion.bookEntityToBook(bor.getBookEntity()));
-        borrowingWS.setStartDate(toXmlGregorianCalendar(dateToGregorianCalendar(bor.getStartDate())));
-        borrowingWS.setReturnDate(toXmlGregorianCalendar(dateToGregorianCalendar(bor.getReturnDate())));
-        borrowingWS.setDueReturnDate(toXmlGregorianCalendar(dateToGregorianCalendar(bor.getDueReturnDate())));
+        if (bor.getStartDate()!= null)
+            borrowingWS.setStartDate(toXmlGregorianCalendar(dateToGregorianCalendar(bor.getStartDate())));
+        if(bor.getReturnDate() != null)
+            borrowingWS.setReturnDate(toXmlGregorianCalendar(dateToGregorianCalendar(bor.getReturnDate())));
+        if(bor.getDueReturnDate() != null)
+            borrowingWS.setDueReturnDate(toXmlGregorianCalendar(dateToGregorianCalendar(bor.getDueReturnDate())));
 
         return borrowingWS;
     }
@@ -45,9 +48,12 @@ public class BorrowingConversion {
         bor.setId(borWS.getId());
         bor.setAppUser(appUserConversion.appUserToAppUserEntity(borWS.getAppUser()));
         bor.setBookEntity(bookConversion.bookToBookEntity(borWS.getBook()));
-        bor.setStartDate(gregToDate(borWS.getStartDate().toGregorianCalendar()));
-        bor.setReturnDate(gregToDate(borWS.getReturnDate().toGregorianCalendar()));
-        bor.setDueReturnDate(gregToDate(borWS.getDueReturnDate().toGregorianCalendar()));
+        if (borWS.getStartDate() != null)
+            bor.setStartDate(gregToDate(borWS.getStartDate().toGregorianCalendar()));
+        if (borWS.getReturnDate() != null)
+            bor.setReturnDate(gregToDate(borWS.getReturnDate().toGregorianCalendar()));
+        if (borWS.getDueReturnDate() != null)
+            bor.setDueReturnDate(gregToDate(borWS.getDueReturnDate().toGregorianCalendar()));
 
         return bor;
     }

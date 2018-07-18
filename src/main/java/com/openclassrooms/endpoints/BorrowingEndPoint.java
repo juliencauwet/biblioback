@@ -1,6 +1,8 @@
 package com.openclassrooms.endpoints;
 
 import com.openclassrooms.biblioback.ws.test.*;
+import com.openclassrooms.conversions.BookConversion;
+import com.openclassrooms.conversions.BorrowingConversion;
 import com.openclassrooms.entities.BookEntity;
 import com.openclassrooms.services.IAppUserService;
 import com.openclassrooms.services.IBookService;
@@ -27,6 +29,8 @@ public class BorrowingEndPoint {
     private IBookService bookService;
     @Autowired
     private IAppUserService appUserService;
+
+    BorrowingConversion borrowingConversion = new BorrowingConversion();
 
     public BorrowingEndPoint(IBorrowingService borrowingService) {
         this.borrowingService = borrowingService;
@@ -88,8 +92,7 @@ public class BorrowingEndPoint {
     public BorrowingGetResponse getBorrowingById(@RequestPayload BorrowingGetRequest request){
         BorrowingGetResponse response = new BorrowingGetResponse();
         com.openclassrooms.entities.Borrowing borrowing = borrowingService.getById(request.getId());
-        Borrowing b = new Borrowing();
-        BeanUtils.copyProperties(borrowing, b);
+        Borrowing b = borrowingConversion.toWS(borrowing);
         response.setBorrowing(b);
         return response;
     }
@@ -103,16 +106,9 @@ public class BorrowingEndPoint {
         List<Borrowing> wsBors = new ArrayList<>();
         List<com.openclassrooms.entities.Borrowing> borrowings = borrowingService.getByAppUserId(request.getUserId());
 
-        for (com.openclassrooms.entities.Borrowing bor: borrowings){
-            System.out.println(bor.getId());
-            System.out.println(bor.getAppUser().getEmail());
-            System.out.println(bor.getBookEntity().getTitle());
-            System.out.println(bor.getExtended());
-        }
 
         for(int i = 0; i < borrowings.size(); i++){
-            Borrowing b = new Borrowing();
-            BeanUtils.copyProperties(borrowings.get(i), b);
+            Borrowing b = borrowingConversion.toWS(borrowings.get(i));
             wsBors.add(b);
         }
         response.getBorrowingGetCurrent().addAll(wsBors);

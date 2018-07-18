@@ -10,8 +10,6 @@ public class Borrowing {
     @Id
     @GeneratedValue
     private int id;
-    String name = "hello";
-    int number =2;
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private AppUser appUser;
@@ -27,7 +25,7 @@ public class Borrowing {
     public Borrowing() {
     }
 
-    public Borrowing(AppUser appUser, BookEntity bookEntity, Date startDate) {
+    public Borrowing(AppUser appUser, BookEntity book, Date startDate) {
         this.appUser = appUser;
         this.book = book;
         this.startDate = startDate;
