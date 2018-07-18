@@ -35,4 +35,9 @@ public class BorrowingService implements IBorrowingService {
     public Borrowing getById(int id) {
         return borrowingRepository.findById(id);
     }
+
+    @Override
+    public List<Borrowing> getByAppUserId(int id) {
+        return borrowingRepository.findAllByAppUserId(id);
+    }
 }

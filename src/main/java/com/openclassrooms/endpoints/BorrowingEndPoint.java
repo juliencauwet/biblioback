@@ -83,6 +83,42 @@ public class BorrowingEndPoint {
         return response;
     }
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "borrowingGetRequest")
+    @ResponsePayload
+    public BorrowingGetResponse getBorrowingById(@RequestPayload BorrowingGetRequest request){
+        BorrowingGetResponse response = new BorrowingGetResponse();
+        com.openclassrooms.entities.Borrowing borrowing = borrowingService.getById(request.getId());
+        Borrowing b = new Borrowing();
+        BeanUtils.copyProperties(borrowing, b);
+        response.setBorrowing(b);
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "borrowingGetCurrentRequest")
+    @ResponsePayload
+    public BorrowingGetCurrentResponse getBorrowings(@RequestPayload BorrowingGetCurrentRequest request){
+
+        BorrowingGetCurrentResponse response = new BorrowingGetCurrentResponse();
+
+        List<Borrowing> wsBors = new ArrayList<>();
+        List<com.openclassrooms.entities.Borrowing> borrowings = borrowingService.getByAppUserId(request.getUserId());
+
+        for (com.openclassrooms.entities.Borrowing bor: borrowings){
+            System.out.println(bor.getId());
+            System.out.println(bor.getAppUser().getEmail());
+            System.out.println(bor.getBookEntity().getTitle());
+            System.out.println(bor.getExtended());
+        }
+
+        for(int i = 0; i < borrowings.size(); i++){
+            Borrowing b = new Borrowing();
+            BeanUtils.copyProperties(borrowings.get(i), b);
+            wsBors.add(b);
+        }
+        response.getBorrowingGetCurrent().addAll(wsBors);
+        return response;
+    }
+
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "borrowingReturnRequest")
     @ResponsePayload
     public BorrowingReturnResponse returnBook(@RequestPayload BorrowingReturnRequest request) {
@@ -101,7 +137,7 @@ public class BorrowingEndPoint {
     @ResponsePayload
     public BorrowingExtendResponse extendBorrowing(@RequestPayload BorrowingExtendRequest request){
         BorrowingExtendResponse response = new BorrowingExtendResponse();
-        com.openclassrooms.entities.Borrowing borrowing = borrowingService.getById(request.getId());
+        com.openclassrooms.entities.Borrowing borrowing = borrowingService.getById(request.getBorrowingId());
 
         if(borrowing.getExtended())
             response.setCodeResp(2);
@@ -110,8 +146,6 @@ public class BorrowingEndPoint {
             response.setCodeResp(1);
             borrowingService.updateBorrowing(borrowing);
         }
-
-
         return response;
     }
 

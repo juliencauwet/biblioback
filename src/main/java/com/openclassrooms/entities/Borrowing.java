@@ -10,12 +10,14 @@ public class Borrowing {
     @Id
     @GeneratedValue
     private int id;
+    String name = "hello";
+    int number =2;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private AppUser appUser;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
-    private BookEntity bookEntity;
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private BookEntity book;
     @NotNull
     private Date startDate;
     private Date returnDate;
@@ -27,7 +29,7 @@ public class Borrowing {
 
     public Borrowing(AppUser appUser, BookEntity bookEntity, Date startDate) {
         this.appUser = appUser;
-        this.bookEntity = bookEntity;
+        this.book = book;
         this.startDate = startDate;
     }
 
@@ -48,11 +50,11 @@ public class Borrowing {
     }
 
     public BookEntity getBookEntity() {
-        return bookEntity;
+        return book;
     }
 
     public void setBookEntity(BookEntity bookEntity) {
-        this.bookEntity = bookEntity;
+        this.book = bookEntity;
     }
 
     public Date getStartDate() {
@@ -71,7 +73,7 @@ public class Borrowing {
         this.returnDate = returnDate;
     }
 
-    public Date setDueReturnDate() {
+    public Date getDueReturnDate() {
         return dueReturnDate;
     }
 

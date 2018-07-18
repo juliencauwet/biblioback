@@ -64,12 +64,13 @@ public class CLR implements CommandLineRunner{
         Borrowing bor2 = new Borrowing(u4, b6, date2);
         Borrowing bor3 = new Borrowing(u2, b2, date3);
         Borrowing bor4 = new Borrowing(u3, b1, date4);
+        Borrowing bor5 = new Borrowing(u1, b4, date2);
 
         borrowingService.newBorrowing(bor1);
         borrowingService.newBorrowing(bor2);
         borrowingService.newBorrowing(bor3);
         borrowingService.newBorrowing(bor4);
-
+        borrowingService.newBorrowing(bor5);
 
         System.out.println("d1 = " + date1 + " \n" + "d2 = " + date2);
 

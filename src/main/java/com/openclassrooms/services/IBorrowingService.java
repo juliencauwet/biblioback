@@ -11,4 +11,5 @@ public interface IBorrowingService {
     void updateBorrowing(Borrowing borrowing);
     List<Borrowing> borrowingReport();
     Borrowing getById(int id);
+    List<Borrowing> getByAppUserId(int id);
 }
