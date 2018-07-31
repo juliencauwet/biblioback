@@ -1,4 +1,4 @@
-package com.openclassrooms;
+package com.openclassrooms.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;

@@ -145,6 +145,23 @@ public class BorrowingEndPoint {
         return response;
     }
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "borrowingGetExpiredRequest")
+    @ResponsePayload
+    public BorrowingGetExpiredResponse getExpiredBorrowings(@RequestPayload BorrowingGetExpiredRequest request){
+
+        BorrowingGetExpiredResponse response = new BorrowingGetExpiredResponse();
+
+        List<Borrowing> wsBors = new ArrayList<>();
+        List<com.openclassrooms.entities.Borrowing> borrowings = borrowingService.getExpiredBorrowing();
+
+
+        for(int i = 0; i < borrowings.size(); i++){
+            Borrowing b = borrowingConversion.toWS(borrowings.get(i));
+            wsBors.add(b);
+        }
+        response.getBorrowingGetExpired().addAll(wsBors);
+        return response;
+    }
 
 }
 

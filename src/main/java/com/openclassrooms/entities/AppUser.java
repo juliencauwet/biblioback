@@ -18,7 +18,7 @@ public class AppUser {
     @NotNull
     private String email;
     @NotNull
-    @Size(min = 5, max = 30)
+    @Size(min = 5)
     private String password;
     private Boolean isAdmin = false;
 

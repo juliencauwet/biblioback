@@ -1,4 +1,4 @@
-package com.openclassrooms;
+package com.openclassrooms.config;
 
 import com.openclassrooms.entities.AppUser;
 import com.openclassrooms.entities.BookEntity;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class CLR implements CommandLineRunner{
@@ -25,9 +26,9 @@ public class CLR implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        BookEntity b1 = new BookEntity("La Peste", "Camus", "Albert",4);
-        BookEntity b2 = new BookEntity("L'Ecume des jours", "Vian", "Boris",1);
-        BookEntity b3 = new BookEntity("L'assomoir", "Zola", "Emile",1);
+        BookEntity b1 = new BookEntity("La Peste", "Camus", "Albert", 4);
+        BookEntity b2 = new BookEntity("L'Ecume des jours", "Vian", "Boris", 1);
+        BookEntity b3 = new BookEntity("L'assomoir", "Zola", "Emile", 1);
         BookEntity b4 = new BookEntity("Les Confessions", "Rousseau", "Jean-Jacques", 2);
         BookEntity b5 = new BookEntity("Candide", "Voltaire", "", 7);
         BookEntity b6 = new BookEntity("Jean de Florette", "Pagnol", "Marcel", 1);
@@ -50,21 +51,29 @@ public class CLR implements CommandLineRunner{
         appUserService.addUser(u4);
 
         String strDate1 = "26/05/2018";
-        String strDate2 = "27/06/2019";
-        String strDate3 = "28/07/2020";
-        String strDate4 = "29/08/2021";
+        String strDate2 = "27/06/2018";
+        String strDate3 = "28/07/2018";
+        String strDate4 = "29/08/2018";
+        String strDate5 = "26/07/2018";
+        String strDate6 = "27/08/2018";
+        String strDate7 = "01/08/2018";
+        String strDate8 = "29/08/2018";
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         Date date1 = sdf.parse(strDate1);
         Date date2 = sdf.parse(strDate2);
         Date date3 = sdf.parse(strDate3);
         Date date4 = sdf.parse(strDate4);
+        Date date5 = sdf.parse(strDate5);
+        Date date6 = sdf.parse(strDate6);
+        Date date7 = sdf.parse(strDate7);
+        Date date8 = sdf.parse(strDate8);
 
-        Borrowing bor1 = new Borrowing(u1, b3, date1);
-        Borrowing bor2 = new Borrowing(u4, b6, date2);
-        Borrowing bor3 = new Borrowing(u2, b2, date3);
-        Borrowing bor4 = new Borrowing(u3, b1, date4);
-        Borrowing bor5 = new Borrowing(u1, b4, date2);
+        Borrowing bor1 = new Borrowing(u1, b3, date1, date5, null);
+        Borrowing bor2 = new Borrowing(u4, b6, date2, date6, null);
+        Borrowing bor3 = new Borrowing(u2, b2, date3, date5, date6);
+        Borrowing bor4 = new Borrowing(u3, b1, date4, date7, date8);
+        Borrowing bor5 = new Borrowing(u1, b4, date2, date8, date7);
 
         borrowingService.newBorrowing(bor1);
         borrowingService.newBorrowing(bor2);
@@ -72,12 +81,26 @@ public class CLR implements CommandLineRunner{
         borrowingService.newBorrowing(bor4);
         borrowingService.newBorrowing(bor5);
 
-        System.out.println("d1 = " + date1 + " \n" + "d2 = " + date2);
+        List<Borrowing> borrowings = borrowingService.getExpiredBorrowing();
 
-        System.out.println(bookService.getBookById(2).getTitle());
-        System.out.println(bookService.getBookById(3).getTitle());
-        System.out.println(bookService.getBookById(4));
-        System.out.println(bookService.getBookById(1));
+        if (borrowings.size() == 0){
+            System.out.println("Il n'y a pas d'emrunts retardés");
+            }else{
+
+
+            for (Borrowing borrowing : borrowings) {
+                Date rd = borrowing.getReturnDate();
+                Date drd = borrowing.getDueReturnDate();
+
+                System.out.println("titre: " + borrowing.getBookEntity().getTitle());
+                System.out.println(drd);
+                System.out.println(rd);
+                if (rd == null){
+                    System.out.println("Pas de date retour");
+                }else
+                    System.out.println("en retard? " +drd.before(rd));
+            }
+        }
 
         /*
         public int borrow(String start, String end, Topo topo){

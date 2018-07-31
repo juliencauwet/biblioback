@@ -325,6 +325,22 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="borrowingGetExpiredRequest" >
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="borrowingGetExpiredResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="borrowingGetExpired" type="tns:borrowing"
+                            minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <!--
 
 - Liste des emprunts prolongés

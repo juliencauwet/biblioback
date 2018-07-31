@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="wsSecurityInterceptor"
+          class="org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor">
+        <property name="policyConfiguration" value="classpath:securityPolicy.xml"/>
+        <property name="callbackHandlers">
+            <list>
+                <ref bean="certificateHandler"/>
+                <ref bean="authenticationHandler"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="keyStore" class="org.springframework.ws.soap.security.support.KeyStoreFactoryBean">
+        <property name="password" value="password"/>
+        <property name="location" value="classpath:org/springframework/ws/soap/security/xwss/test-keystore.jks"/>
+    </bean>
+
+    <xwss:SecurityConfiguration xmlns:xwss="http://java.sun.com/xml/ns/xwss/config">
+        <xwss:RequireUsernameToken passwordDigestRequired="false" nonceRequired="false"/>
+    </xwss:SecurityConfiguration>
+
+</beans>

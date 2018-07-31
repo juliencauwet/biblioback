@@ -25,10 +25,12 @@ public class Borrowing {
     public Borrowing() {
     }
 
-    public Borrowing(AppUser appUser, BookEntity book, Date startDate) {
+    public Borrowing(AppUser appUser, BookEntity book, Date startDate, Date dueReturnDate, Date returnDate) {
         this.appUser = appUser;
         this.book = book;
         this.startDate = startDate;
+        this.returnDate= returnDate;
+        this.dueReturnDate = dueReturnDate;
     }
 
     public int getId() {

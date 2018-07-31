@@ -1,9 +1,6 @@
 package com.openclassrooms.endpoints;
 
-import com.openclassrooms.biblioback.ws.test.AppUserAddRequest;
-import com.openclassrooms.biblioback.ws.test.AppUserGetAllResponse;
-import com.openclassrooms.biblioback.ws.test.AppUserValidityCheckRequest;
-import com.openclassrooms.biblioback.ws.test.AppUserValidityCheckResponse;
+import com.openclassrooms.biblioback.ws.test.*;
 import com.openclassrooms.entities.AppUser;
 import com.openclassrooms.services.AppUserService;
 import com.openclassrooms.services.IAppUserService;
@@ -35,13 +32,22 @@ public class AppUserEndPoint {
      */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "appUserAddRequest")
     @ResponsePayload
-    public void addAppUser(@RequestPayload AppUserAddRequest request){
-        AppUser appUser = new AppUser();
-        appUser.setFirstName(request.getFirstName());
-        appUser.setName(request.getName());
-        appUser.setPassword(request.getPassword());
-        appUser.setEmail(request.getEmail());
-        appUserService.addUser(appUser);
+    public AppUserAddResponse addAppUser(@RequestPayload AppUserAddRequest request){
+        AppUserAddResponse response = new AppUserAddResponse();
+
+        try {
+            AppUser appUser = new AppUser();
+            appUser.setFirstName(request.getFirstName());
+            appUser.setName(request.getName());
+            appUser.setPassword(request.getPassword());
+            appUser.setEmail(request.getEmail());
+            appUserService.addUser(appUser);
+            response.setConfirmation(true);
+        }catch (Exception e ){
+            System.out.println("L'utilisateur n'a pas pu être enregistré");
+            response.setConfirmation(false);
+        }
+       return response;
     }
 
 
