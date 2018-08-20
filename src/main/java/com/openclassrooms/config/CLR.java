@@ -6,6 +6,7 @@ import com.openclassrooms.entities.Borrowing;
 import com.openclassrooms.services.AppUserService;
 import com.openclassrooms.services.BookService;
 import com.openclassrooms.services.BorrowingService;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -44,11 +45,13 @@ public class CLR implements CommandLineRunner{
         AppUser u2 = new AppUser("Juan", "Olivero", "jjolivero83@gmail.com", "abcde", false);
         AppUser u3 = new AppUser("Manu", "Favre", "emmfavvic@gmail.com", "vwxyz", false);
         AppUser u4 = new AppUser("Laëtitia", "Cauwet", "laetis0609@yahoo.fr", "98765", false);
+        AppUser u5 = new AppUser("Kenza", "Favre-Victoire", "kenza.favrevictoire@icloud.com", "23456", false);
 
         appUserService.addUser(u1);
         appUserService.addUser(u2);
         appUserService.addUser(u3);
         appUserService.addUser(u4);
+        appUserService.addUser(u5);
 
         String strDate1 = "26/05/2018";
         String strDate2 = "27/06/2018";
@@ -73,7 +76,7 @@ public class CLR implements CommandLineRunner{
         Borrowing bor2 = new Borrowing(u4, b6, date2, date6, null);
         Borrowing bor3 = new Borrowing(u2, b2, date3, date5, date6);
         Borrowing bor4 = new Borrowing(u3, b1, date4, date7, date8);
-        Borrowing bor5 = new Borrowing(u1, b4, date2, date8, date7);
+        Borrowing bor5 = new Borrowing(u5, b4, date1, date2, null);
 
         borrowingService.newBorrowing(bor1);
         borrowingService.newBorrowing(bor2);
@@ -84,7 +87,7 @@ public class CLR implements CommandLineRunner{
         List<Borrowing> borrowings = borrowingService.getExpiredBorrowing();
 
         if (borrowings.size() == 0){
-            System.out.println("Il n'y a pas d'emrunts retardés");
+            System.out.println("Il n'y a pas d'emprunts retardés");
             }else{
 
 
@@ -102,55 +105,6 @@ public class CLR implements CommandLineRunner{
             }
         }
 
-        /*
-        public int borrow(String start, String end, Topo topo){
-        Date startDate = null;
-        Date endDate = null;
-        Date today = new Date();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-        try {
-            startDate = sdf.parse(start);
-            endDate = sdf.parse(end);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        if (startDate.after(endDate) || today.after(startDate)) {
-            return 1;
-        }
-
-        Calendar c0 = Calendar.getInstance();
-        Calendar c1 = Calendar.getInstance();
-        c0.setTime(startDate);
-        c1.setTime(endDate);
-        c1.add(Calendar.DATE, 1);
-
-        List<Borrowing> borrowing;
-
-        do {
-
-            borrowing = borrowingService.getBorrowing(c0.getTime(), topo.getId());
-
-            if (borrowing.size() > 0 )
-                return 2;
-            else
-                c0.add(Calendar.DATE, 1);
-        } while (!c0.equals(c1));
-
-        c0.setTime(startDate);
-
-        do {
-            borrowingService.addBorrowing(new Borrowing(topo, c0.getTime()));
-            c0.add(Calendar.DATE, 1);
-        } while (!c0.equals(c1));
-
-        return 3;
-
-    }
-         */
-
-        System.out.println("Quelques données ont été entrées!");
     }
 }

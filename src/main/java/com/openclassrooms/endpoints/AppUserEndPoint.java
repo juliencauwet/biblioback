@@ -4,6 +4,8 @@ import com.openclassrooms.biblioback.ws.test.*;
 import com.openclassrooms.entities.AppUser;
 import com.openclassrooms.services.AppUserService;
 import com.openclassrooms.services.IAppUserService;
+import org.apache.log4j.Logger;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -26,6 +28,7 @@ public class AppUserEndPoint {
         this.appUserService = appUserService;
     }
 
+    private static final Logger log = Logger.getLogger(AppUserEndPoint.class);
     /**
      *
      * @param request
@@ -44,7 +47,7 @@ public class AppUserEndPoint {
             appUserService.addUser(appUser);
             response.setConfirmation(true);
         }catch (Exception e ){
-            System.out.println("L'utilisateur n'a pas pu être enregistré");
+            log.info("L'utilisateur n'a pas pu être enregistré");
             response.setConfirmation(false);
         }
        return response;
@@ -54,12 +57,19 @@ public class AppUserEndPoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "appUserValidityCheckRequest")
     @ResponsePayload
     public AppUserValidityCheckResponse checkUser(@RequestPayload AppUserValidityCheckRequest request){
+
+
         AppUserValidityCheckResponse response = new AppUserValidityCheckResponse();
         AppUser au = appUserService.checkUser(request.getEmail());
         com.openclassrooms.biblioback.ws.test.AppUser auws = new com.openclassrooms.biblioback.ws.test.AppUser();
+        log.info("Vérification du password: ");
+        log.info("au.password: " + au.getPassword());
+        log.info("request.password: " +request.getPassword());
         BeanUtils.copyProperties(au, auws);
-        if (au.getPassword().equals(request.getPassword()))
+        if (au.getPassword().equals(request.getPassword())) {
+            log.info("Mots de passe saisis identiques!");
             response.setUser(auws);
+        }
 
        return response;
     }
@@ -81,16 +91,6 @@ public class AppUserEndPoint {
 
         return response;
     }
-
-   // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "appUserGetByIdRequest")
-   // @ResponsePayload
-   // public AppUserGetByIdResponse getBookById(@RequestPayload AppUserGetByIdRequest request) {
-   //     BookGetByIdResponse response = new BookGetByIdResponse();
-   //     Book book = new Book();
-   //     BeanUtils.copyProperties(bookService.getBookById(request.getId()), book);
-   //     response.setBookGet(book);
-   //     return response;
-   // }
 
 
 }

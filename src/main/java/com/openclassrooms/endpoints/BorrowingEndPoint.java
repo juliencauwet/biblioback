@@ -7,6 +7,7 @@ import com.openclassrooms.entities.BookEntity;
 import com.openclassrooms.services.IAppUserService;
 import com.openclassrooms.services.IBookService;
 import com.openclassrooms.services.IBorrowingService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -21,6 +22,7 @@ import java.util.List;
 @Endpoint
 public class BorrowingEndPoint {
     private static final String NAMESPACE_URI = "http://test.ws.biblioback.openclassrooms.com";
+    private static final Logger log = Logger.getLogger(BorrowingEndPoint.class);
 
     @Autowired
     private IBorrowingService borrowingService;
@@ -69,6 +71,8 @@ public class BorrowingEndPoint {
 
         BorrowingAddResponse response = new BorrowingAddResponse();
 
+        log.info("ajout d'un nouvel emprunt:" + request.getBookId());
+
         com.openclassrooms.entities.Borrowing borrowing = new com.openclassrooms.entities.Borrowing();
 
         com.openclassrooms.entities.AppUser appUser = appUserService.getAppUserById(request.getAppUserId());
@@ -79,6 +83,7 @@ public class BorrowingEndPoint {
             borrowing.setAppUser(appUser);
             borrowing.setBookEntity(book);
             borrowing.setStartDate(request.getStartDate().toGregorianCalendar().getTime());
+            borrowing.setDueReturnDate(request.getDueReturnDate().toGregorianCalendar().getTime());
             book.setNumber(book.getNumber() - 1);
             bookService.updateBook(book);
             borrowingService.newBorrowing(borrowing);
@@ -139,6 +144,7 @@ public class BorrowingEndPoint {
             response.setCodeResp(2);
         else {
             borrowing.setExtended(true);
+            borrowing.setDueReturnDate(request.getNewDueReturnDate().toGregorianCalendar().getTime());
             response.setCodeResp(1);
             borrowingService.updateBorrowing(borrowing);
         }

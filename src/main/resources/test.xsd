@@ -264,7 +264,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="borrowingId" type="xs:int" />
-                <xs:element name="extensionTime" type="xs:int"/>
+                <xs:element name="newDueReturnDate" type="xs:date"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

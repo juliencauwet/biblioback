@@ -38,6 +38,8 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     public XsdSchema testSchema() {
         return new SimpleXsdSchema(new ClassPathResource("test.xsd"));
     }
+
+
     /*
     @Bean(name = "book")
     public DefaultWsdl11Definition BookDefaultWsdl11Definition(XsdSchema booksSchema) {
