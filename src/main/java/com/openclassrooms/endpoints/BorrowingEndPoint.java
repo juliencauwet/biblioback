@@ -51,8 +51,7 @@ public class BorrowingEndPoint {
         List<com.openclassrooms.entities.Borrowing> borrowings = borrowingService.borrowingReport();
 
         for (int i = 0; i < borrowings.size(); i++) {
-            Borrowing b = new Borrowing();
-            BeanUtils.copyProperties(borrowings.get(i), b);
+            Borrowing b = borrowingConversion.toWS(borrowings.get(i));
             borrowingList.add(b);
         }
         response.getBorrowingGetAll().addAll(borrowingList);
@@ -127,8 +126,16 @@ public class BorrowingEndPoint {
         BorrowingReturnResponse response = new BorrowingReturnResponse();
 
         com.openclassrooms.entities.Borrowing borrowing = borrowingService.getById(request.getId());
+        BookEntity bookEntity = borrowing.getBookEntity();
+
+        //remet le livre dans le stock
+        bookEntity.setNumber(bookEntity.getNumber() + 1);
+        bookService.updateBook(bookEntity);
+
+        //sauve la date de retour
         borrowing.setReturnDate(new Date());
         borrowingService.updateBorrowing(borrowing);
+
         response.setConfirmation(true);
 
         return response;

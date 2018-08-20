@@ -302,7 +302,31 @@
 
     <!--
 
-- Liste des emprunts en cours
+- Liste des emprunts en cours de tous les utilisateurs
+  *	List<Borrowing> borrowings
+  **	no parameter
+
+ -->
+
+    <xs:element name="borrowingGetAllRequest" >
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="borrowingGetAllResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="borrowingGetAll" type="tns:borrowing"
+                            minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--
+
+- Liste des emprunts en cours de l'utilisateur connecté
    *	List<Borrowing> borrowings
    **	no parameter
 

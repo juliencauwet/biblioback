@@ -14,4 +14,5 @@ public interface IBorrowingService {
     Borrowing getById(int id);
     List<Borrowing> getByAppUserId(int id);
     List<Borrowing> getExpiredBorrowing();
+    List<Borrowing> getAllBorrowings();
 }

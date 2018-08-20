@@ -57,4 +57,11 @@ public class BorrowingService implements IBorrowingService {
         borrowingRepository.findAllByDueReturnDateBeforeAndReturnDateIsNull(date).forEach(borrowings::add);
         return borrowings;
     }
+
+    @Override
+    public List<Borrowing> getAllBorrowings() {
+        List<Borrowing> borrowings = new ArrayList<>();
+        borrowingRepository.findAll().forEach(borrowings::add);
+        return borrowings;
+    }
 }
