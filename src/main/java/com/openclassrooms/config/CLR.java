@@ -43,9 +43,9 @@ public class CLR implements CommandLineRunner{
 
         AppUser u1 = new AppUser("Julien", "Cauwet", "juliencauwet@yahoo.fr", "12345", true);
         AppUser u2 = new AppUser("Juan", "Olivero", "jjolivero83@gmail.com", "abcde", false);
-        AppUser u3 = new AppUser("Manu", "Favre", "emmfavvic@gmail.com", "vwxyz", false);
+        AppUser u3 = new AppUser("Manu", "Favre", "emfavvic@gmail.com", "vwxyz", false);
         AppUser u4 = new AppUser("Laëtitia", "Cauwet", "laetis0609@yahoo.fr", "98765", false);
-        AppUser u5 = new AppUser("Kenza", "Favre-Victoire", "kenza.favrevictoire@icloud.com", "23456", false);
+        AppUser u5 = new AppUser("Cesare", "De Padua", "cesaredepadua@gmail.com", "23456", false);
 
         appUserService.addUser(u1);
         appUserService.addUser(u2);
@@ -75,8 +75,8 @@ public class CLR implements CommandLineRunner{
         Borrowing bor1 = new Borrowing(u1, b3, date1, date5, null);
         Borrowing bor2 = new Borrowing(u4, b6, date2, date6, null);
         Borrowing bor3 = new Borrowing(u2, b2, date3, date5, date6);
-        Borrowing bor4 = new Borrowing(u3, b1, date4, date7, date8);
-        Borrowing bor5 = new Borrowing(u5, b4, date1, date2, null);
+        Borrowing bor4 = new Borrowing(u5, b1, date4, date7, date8);
+        Borrowing bor5 = new Borrowing(u3, b4, date1, date2, null);
 
         borrowingService.newBorrowing(bor1);
         borrowingService.newBorrowing(bor2);

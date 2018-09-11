@@ -60,15 +60,19 @@ public class AppUserEndPoint {
 
 
         AppUserValidityCheckResponse response = new AppUserValidityCheckResponse();
-        AppUser au = appUserService.checkUser(request.getEmail());
-        com.openclassrooms.biblioback.ws.test.AppUser auws = new com.openclassrooms.biblioback.ws.test.AppUser();
-        log.info("Vérification du password: ");
-        log.info("au.password: " + au.getPassword());
-        log.info("request.password: " +request.getPassword());
-        BeanUtils.copyProperties(au, auws);
-        if (au.getPassword().equals(request.getPassword())) {
-            log.info("Mots de passe saisis identiques!");
-            response.setUser(auws);
+        try {
+            AppUser au = appUserService.checkUser(request.getEmail());
+            com.openclassrooms.biblioback.ws.test.AppUser auws = new com.openclassrooms.biblioback.ws.test.AppUser();
+            log.info("Vérification du password: ");
+            log.info("au.password: " + au.getPassword());
+            log.info("request.password: " +request.getPassword());
+            BeanUtils.copyProperties(au, auws);
+            if (au.getPassword().equals(request.getPassword())) {
+                log.info("Mots de passe saisis identiques!");
+                response.setUser(auws);
+            }
+        }catch(NullPointerException e){
+            log.info("Nom d'utiisateur ou mot de passe incorrect!");
         }
 
        return response;
