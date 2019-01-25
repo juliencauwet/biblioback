@@ -1,6 +1,7 @@
 package com.openclassrooms.services;
 
 import com.openclassrooms.entities.Borrowing;
+import com.openclassrooms.entities.Status;
 import com.openclassrooms.repositories.BorrowingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,5 +64,18 @@ public class BorrowingService implements IBorrowingService {
         List<Borrowing> borrowings = new ArrayList<>();
         borrowingRepository.findAll().forEach(borrowings::add);
         return borrowings;
+    }
+
+    //TODO: filter borrowings
+    @Override
+    public List<Borrowing> filterBorrowingByStatus(Status status) {
+        return borrowingRepository.findBorrowingsByStatus(status);
+    }
+
+    @Override
+    public void deleteBorrowings(List<Borrowing> borrowings) {
+        for (Borrowing borrowing: borrowings) {
+            borrowingRepository.deleteBorrowingById(borrowing.getId());
+        }
     }
 }

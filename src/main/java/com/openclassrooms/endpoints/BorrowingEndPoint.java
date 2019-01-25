@@ -4,6 +4,7 @@ import com.openclassrooms.biblioback.ws.test.*;
 import com.openclassrooms.conversions.BookConversion;
 import com.openclassrooms.conversions.BorrowingConversion;
 import com.openclassrooms.entities.BookEntity;
+import com.openclassrooms.entities.Status;
 import com.openclassrooms.services.IAppUserService;
 import com.openclassrooms.services.IBookService;
 import com.openclassrooms.services.IBorrowingService;
@@ -32,7 +33,7 @@ public class BorrowingEndPoint {
     @Autowired
     private IAppUserService appUserService;
 
-    BorrowingConversion borrowingConversion = new BorrowingConversion();
+    private BorrowingConversion borrowingConversion = new BorrowingConversion();
 
     public BorrowingEndPoint(IBorrowingService borrowingService) {
         this.borrowingService = borrowingService;
@@ -79,6 +80,9 @@ public class BorrowingEndPoint {
         if (book.getNumber() < 1)
             response.setConfirmation(false);
         else {
+            //new: Upon order, the borrowing is at PANIER status for 48h
+            borrowing.setStatus(Status.PANIER);
+
             borrowing.setAppUser(appUser);
             borrowing.setBookEntity(book);
             borrowing.setStartDate(request.getStartDate().toGregorianCalendar().getTime());
@@ -175,6 +179,10 @@ public class BorrowingEndPoint {
         response.getBorrowingGetExpired().addAll(wsBors);
         return response;
     }
+
+    //TODO: method to remove targeted borrowings by id
+
+
 
 }
 
