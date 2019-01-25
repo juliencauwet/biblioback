@@ -374,6 +374,13 @@
    *
    -->
 
+    <xs:simpleType name="status" final="restriction" >
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="panier" />
+            <xs:enumeration value="commande" />
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:complexType name="borrowing">
         <xs:sequence>
             <xs:element name="id" type="xs:int"/>
@@ -382,9 +389,8 @@
             <xs:element name="startDate" type="xs:date"/>
             <xs:element name="returnDate" type="xs:date" />
             <xs:element name="dueReturnDate" type="xs:date" />
+            <xs:element name="status" type="tns:status" />
         </xs:sequence>
     </xs:complexType>
-
-
 
 </xs:schema>
