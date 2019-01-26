@@ -373,6 +373,23 @@
 - Liste des emprunts non rendus à temps
    *
    -->
+    <xs:element name="borrowingsDeleteByIdRequest" >
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="borrowingDeleteById" type="xs:int"
+                            minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="borrowingsDeleteByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="borrowingDeleteById" type="xs:int"
+                            minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:simpleType name="status" final="restriction" >
         <xs:restriction base="xs:string">

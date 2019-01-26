@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.09.19 à 12:22:44 PM CEST 
+// Généré le : 2019.01.26 à 10:09:27 AM CET 
 //
 
 
@@ -32,6 +32,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="startDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *         &lt;element name="returnDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *         &lt;element name="dueReturnDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
+ *         &lt;element name="status" type="{http://test.ws.biblioback.openclassrooms.com}status"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,7 +48,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "appUser",
     "startDate",
     "returnDate",
-    "dueReturnDate"
+    "dueReturnDate",
+    "status"
 })
 public class Borrowing {
 
@@ -65,6 +67,8 @@ public class Borrowing {
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar dueReturnDate;
+    @XmlElement(required = true)
+    protected Status status;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -200,6 +204,30 @@ public class Borrowing {
      */
     public void setDueReturnDate(XMLGregorianCalendar value) {
         this.dueReturnDate = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété status.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Status }
+     *     
+     */
+    public Status getStatus() {
+        return status;
+    }
+
+    /**
+     * Définit la valeur de la propriété status.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Status }
+     *     
+     */
+    public void setStatus(Status value) {
+        this.status = value;
     }
 
 }

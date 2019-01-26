@@ -9,8 +9,10 @@ import com.openclassrooms.services.IAppUserService;
 import com.openclassrooms.services.IBookService;
 import com.openclassrooms.services.IBorrowingService;
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -34,6 +36,8 @@ public class BorrowingEndPoint {
     private IAppUserService appUserService;
 
     private BorrowingConversion borrowingConversion = new BorrowingConversion();
+
+    private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public BorrowingEndPoint(IBorrowingService borrowingService) {
         this.borrowingService = borrowingService;
@@ -181,7 +185,17 @@ public class BorrowingEndPoint {
     }
 
     //TODO: method to remove targeted borrowings by id
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "borrowingsDeleteByIdRequest")
+    @ResponsePayload
+    @Transactional
+    public BorrowingsDeleteByIdResponse deleteBorrowingListById(@RequestPayload BorrowingsDeleteByIdRequest request){
+        logger.info("entering deleteBorrowingListById");
+        BorrowingsDeleteByIdResponse response = new BorrowingsDeleteByIdResponse();
 
+        borrowingService.deleteBorrowingListById(request.getBorrowingDeleteById());
+
+        return response;
+    }
 
 
 }

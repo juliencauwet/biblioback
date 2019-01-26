@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.09.19 à 12:22:44 PM CEST 
+// Généré le : 2019.01.26 à 10:09:27 AM CET 
 //
 
 
@@ -149,6 +149,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link BorrowingsDeleteByIdRequest }
+     * 
+     */
+    public BorrowingsDeleteByIdRequest createBorrowingsDeleteByIdRequest() {
+        return new BorrowingsDeleteByIdRequest();
+    }
+
+    /**
      * Create an instance of {@link AppUserValidityCheckResponse }
      * 
      */
@@ -282,6 +290,14 @@ public class ObjectFactory {
      */
     public BookGetByIdResponse createBookGetByIdResponse() {
         return new BookGetByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link BorrowingsDeleteByIdResponse }
+     * 
+     */
+    public BorrowingsDeleteByIdResponse createBorrowingsDeleteByIdResponse() {
+        return new BorrowingsDeleteByIdResponse();
     }
 
     /**

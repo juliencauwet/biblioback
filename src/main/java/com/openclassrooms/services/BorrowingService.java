@@ -73,9 +73,9 @@ public class BorrowingService implements IBorrowingService {
     }
 
     @Override
-    public void deleteBorrowings(List<Borrowing> borrowings) {
-        for (Borrowing borrowing: borrowings) {
-            borrowingRepository.deleteBorrowingById(borrowing.getId());
-        }
+    public void deleteBorrowingListById(List<Integer> borrowingIds) {
+        for (int i: borrowingIds)
+            borrowingRepository.deleteBorrowingById(i);
     }
+
 }
