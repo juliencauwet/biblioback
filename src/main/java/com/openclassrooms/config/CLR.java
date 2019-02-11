@@ -1,8 +1,10 @@
 package com.openclassrooms.config;
 
+import com.openclassrooms.entities.AppRole;
 import com.openclassrooms.entities.AppUser;
 import com.openclassrooms.entities.BookEntity;
 import com.openclassrooms.entities.Borrowing;
+import com.openclassrooms.repositories.AppRoleRepository;
 import com.openclassrooms.services.AppUserService;
 import com.openclassrooms.services.BookService;
 import com.openclassrooms.services.BorrowingService;
@@ -12,6 +14,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +27,8 @@ public class CLR implements CommandLineRunner{
     AppUserService appUserService;
     @Autowired
     BorrowingService borrowingService;
+    @Autowired
+    AppRoleRepository appRoleRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -85,6 +90,14 @@ public class CLR implements CommandLineRunner{
         borrowingService.newBorrowing(bor5);
 
         List<Borrowing> borrowings = borrowingService.getExpiredBorrowing();
+
+        AppRole admin = new AppRole(1,"ADMIN", new ArrayList<>());
+        AppRole employe = new AppRole(2, "EMPLOYE", new ArrayList<>());
+        AppRole utillisateur = new AppRole(3, "UTILISATEUR", new ArrayList<>());
+
+        appRoleRepository.save(admin);
+        appRoleRepository.save(employe);
+        appRoleRepository.save(utillisateur);
 
         if (borrowings.size() == 0){
             System.out.println("Il n'y a pas d'emprunts retardés");
